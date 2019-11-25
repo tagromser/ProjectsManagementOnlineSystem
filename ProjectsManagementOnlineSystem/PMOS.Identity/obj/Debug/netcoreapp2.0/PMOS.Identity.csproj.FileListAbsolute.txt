@@ -1,0 +1,13 @@
+E:\Activity\Sibers\TestTasks\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.Identity\bin\Debug\netcoreapp2.0\PMOS.Identity.deps.json
+E:\Activity\Sibers\TestTasks\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.Identity\bin\Debug\netcoreapp2.0\PMOS.Identity.dll
+E:\Activity\Sibers\TestTasks\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.Identity\obj\Debug\netcoreapp2.0\PMOS.Identity.csprojAssemblyReference.cache
+E:\Activity\Sibers\TestTasks\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.Identity\obj\Debug\netcoreapp2.0\PMOS.Identity.AssemblyInfoInputs.cache
+E:\Activity\Sibers\TestTasks\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.Identity\obj\Debug\netcoreapp2.0\PMOS.Identity.AssemblyInfo.cs
+E:\Activity\Sibers\TestTasks\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.Identity\bin\Debug\netcoreapp2.0\PMOS.Identity.pdb
+E:\Activity\Sibers\TestTasks\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.Identity\bin\Debug\netcoreapp2.0\PMOS.DataAccess.dll
+E:\Activity\Sibers\TestTasks\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.Identity\bin\Debug\netcoreapp2.0\PMOS.DataAccess.pdb
+E:\Activity\Sibers\TestTasks\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.Identity\obj\Debug\netcoreapp2.0\PMOS.Identity.csproj.CopyComplete
+E:\Activity\Sibers\TestTasks\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.Identity\obj\Debug\netcoreapp2.0\PMOS.Identity.dll
+E:\Activity\Sibers\TestTasks\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.Identity\obj\Debug\netcoreapp2.0\PMOS.Identity.pdb
+E:\Activity\Sibers\TestTasks\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.Identity\bin\Debug\netcoreapp2.0\PMOS.DTO.dll
+E:\Activity\Sibers\TestTasks\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.Identity\bin\Debug\netcoreapp2.0\PMOS.DTO.pdb

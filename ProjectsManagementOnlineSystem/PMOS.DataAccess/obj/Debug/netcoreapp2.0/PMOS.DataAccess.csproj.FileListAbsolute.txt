@@ -1,0 +1,8 @@
+E:\Activity\Sibers\TestTasks\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.DataAccess\bin\Debug\netcoreapp2.0\PMOS.DataAccess.deps.json
+E:\Activity\Sibers\TestTasks\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.DataAccess\bin\Debug\netcoreapp2.0\PMOS.DataAccess.dll
+E:\Activity\Sibers\TestTasks\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.DataAccess\obj\Debug\netcoreapp2.0\PMOS.DataAccess.AssemblyInfoInputs.cache
+E:\Activity\Sibers\TestTasks\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.DataAccess\obj\Debug\netcoreapp2.0\PMOS.DataAccess.AssemblyInfo.cs
+E:\Activity\Sibers\TestTasks\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.DataAccess\bin\Debug\netcoreapp2.0\PMOS.DataAccess.pdb
+E:\Activity\Sibers\TestTasks\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.DataAccess\obj\Debug\netcoreapp2.0\PMOS.DataAccess.dll
+E:\Activity\Sibers\TestTasks\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.DataAccess\obj\Debug\netcoreapp2.0\PMOS.DataAccess.pdb
+E:\Activity\Sibers\TestTasks\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.DataAccess\obj\Debug\netcoreapp2.0\PMOS.DataAccess.csprojAssemblyReference.cache

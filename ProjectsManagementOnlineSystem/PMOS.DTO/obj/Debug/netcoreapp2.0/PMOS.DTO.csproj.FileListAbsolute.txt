@@ -1,0 +1,8 @@
+E:\Activity\Sibers\TestTasks\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.DTO\bin\Debug\netcoreapp2.0\PMOS.DTO.deps.json
+E:\Activity\Sibers\TestTasks\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.DTO\bin\Debug\netcoreapp2.0\PMOS.DTO.dll
+E:\Activity\Sibers\TestTasks\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.DTO\bin\Debug\netcoreapp2.0\PMOS.DTO.pdb
+E:\Activity\Sibers\TestTasks\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.DTO\obj\Debug\netcoreapp2.0\PMOS.DTO.csprojAssemblyReference.cache
+E:\Activity\Sibers\TestTasks\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.DTO\obj\Debug\netcoreapp2.0\PMOS.DTO.AssemblyInfoInputs.cache
+E:\Activity\Sibers\TestTasks\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.DTO\obj\Debug\netcoreapp2.0\PMOS.DTO.AssemblyInfo.cs
+E:\Activity\Sibers\TestTasks\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.DTO\obj\Debug\netcoreapp2.0\PMOS.DTO.dll
+E:\Activity\Sibers\TestTasks\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.DTO\obj\Debug\netcoreapp2.0\PMOS.DTO.pdb

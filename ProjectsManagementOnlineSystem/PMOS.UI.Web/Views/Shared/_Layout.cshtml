@@ -1,0 +1,66 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using PMOS.DTO.Account
+
+@inject SignInManager<UserDTO> SignInManager
+@inject UserManager<UserDTO> UserManager
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="~/Frameworks/bootstrap-4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Icons/fontawesome-5.0.13/css/fontawesome-all.min.css" rel="stylesheet" />
+    <link href="~/Styles/generic.css" rel="stylesheet" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        @if (!SignInManager.IsSignedIn(User))
+        {
+            <a asp-area="" asp-controller="Project" asp-action="Index" class="navbar-brand mr-auto">
+                <span class="middle d-sm-inline-block d-none">Онлайн система управления проектами</span>
+            </a>
+        }
+        else
+        {
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Управление сотрудниками</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Управление проектами</a>
+                    </li>
+                </ul>
+
+                <ul class="nav justify-content-end">
+                    <li class="nav-item dropdown border-right">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: black;">
+                            @UserManager.GetUserName(User)
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="right: 0; left: auto;">
+                            <form asp-area="" asp-controller="Account" asp-action="Logout" method="post">
+                                <button class="dropdown-item" type="submit">Выйти</button>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        }
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+
+    <div>
+        @RenderBody()
+    </div>
+
+    <script src="~/Frameworks/jquery-3.3.1/jquery-3.3.1.min.js"></script>
+    <script src="~/Frameworks/bootstrap-4.0.0/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Frameworks/Addons/jquery-validate-1.17.0/jquery.validate.min.js"></script>
+    <script src="~/Frameworks/Addons/jquery-validate-1.17.0/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/generic.js"></script>
+</body>
+</html>

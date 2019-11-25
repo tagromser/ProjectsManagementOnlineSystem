@@ -1,0 +1,317 @@
+{
+  "format": 1,
+  "restore": {
+    "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.UI.Web\\PMOS.UI.Web.csproj": {}
+  },
+  "projects": {
+    "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DataAccess\\PMOS.DataAccess.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DataAccess\\PMOS.DataAccess.csproj",
+        "projectName": "PMOS.DataAccess",
+        "projectPath": "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DataAccess\\PMOS.DataAccess.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DataAccess\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.0": {
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DTO\\PMOS.DTO.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DTO\\PMOS.DTO.csproj",
+        "projectName": "PMOS.DTO",
+        "projectPath": "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DTO\\PMOS.DTO.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DTO\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.0": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.Identity\\PMOS.Identity.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.Identity\\PMOS.Identity.csproj",
+        "projectName": "PMOS.Identity",
+        "projectPath": "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.Identity\\PMOS.Identity.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.Identity\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.0": {
+            "projectReferences": {
+              "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DataAccess\\PMOS.DataAccess.csproj": {
+                "projectPath": "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DataAccess\\PMOS.DataAccess.csproj"
+              },
+              "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DTO\\PMOS.DTO.csproj": {
+                "projectPath": "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DTO\\PMOS.DTO.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.0": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.0.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.Logic\\PMOS.Logic.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.Logic\\PMOS.Logic.csproj",
+        "projectName": "PMOS.Logic",
+        "projectPath": "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.Logic\\PMOS.Logic.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.Logic\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.0": {
+            "projectReferences": {
+              "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DataAccess\\PMOS.DataAccess.csproj": {
+                "projectPath": "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DataAccess\\PMOS.DataAccess.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.0": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.UI.Web\\PMOS.UI.Web.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.UI.Web\\PMOS.UI.Web.csproj",
+        "projectName": "PMOS.UI.Web",
+        "projectPath": "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.UI.Web\\PMOS.UI.Web.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.UI.Web\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.0": {
+            "projectReferences": {
+              "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.Identity\\PMOS.Identity.csproj": {
+                "projectPath": "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.Identity\\PMOS.Identity.csproj"
+              },
+              "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.Logic\\PMOS.Logic.csproj": {
+                "projectPath": "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.Logic\\PMOS.Logic.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.0": {
+          "dependencies": {
+            "Microsoft.AspNetCore.All": {
+              "target": "Package",
+              "version": "[2.0.9, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.0, )",
+              "autoReferenced": true
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[2.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
