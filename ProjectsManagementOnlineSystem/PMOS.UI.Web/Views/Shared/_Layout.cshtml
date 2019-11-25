@@ -26,11 +26,14 @@
         {
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Управление сотрудниками</a>
+                    <li class="nav-item">
+                        <a asp-controller="Home" asp-action="Index" class="nav-link navbar-brand">Главная</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Управление проектами</a>
+                        <a asp-controller="Worker" asp-action="Index" class="nav-link">Управление сотрудниками</a>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-controller="Project" asp-action="Index" class="nav-link">Управление проектами</a>
                     </li>
                 </ul>
 

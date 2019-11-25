@@ -2,19 +2,16 @@
 @model RegisterViewModel
 
 @{
-    ViewData["Title"] = "Регистрация";
+    ViewData["Title"] = "Регистрация сотрудника";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="card">
-    <div class="card-header text-center">
-        Регистрация
-    </div>
-    <div class="card-body">
-        <form asp-controller="Account" asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" asp-antiforgery="true" method="post">
-            <div asp-validation-summary="All" class="text-danger"></div>
+<h2>Регистрация сотрудника</h2>
 
-            <input asp-for="IdRole" value="1" type="hidden" />
+<div class="card">
+    <div class="card-body">
+        <form asp-controller="Account" asp-action="Register" asp-route-returnurl="/Worker" asp-antiforgery="true" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
 
             <div class="form-group">
                 <label asp-for="Login"></label>
@@ -59,11 +56,22 @@
             </div>
 
             <div class="form-group">
+                <label asp-for="IdRole">Роль</label>
+                <select class="custom-select form-control" asp-for="IdRole">
+                    <option value="2">менеджер проекта</option>
+                    <option selected="selected" value="3">сотрудник</option>
+                </select>
+                <span asp-validation-for="IdRole" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
                 <button type="submit" class="btn btn-success">Регистрация</button>
+            </div>
+
+            <div>
+                <a asp-action="Index">Назад к списку</a>
             </div>
         </form>
     </div>
-    <div class="card-footer">
-        <a asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]">Авторизация</a>
-    </div>
 </div>
+

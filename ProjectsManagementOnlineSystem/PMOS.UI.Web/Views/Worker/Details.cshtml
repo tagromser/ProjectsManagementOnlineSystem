@@ -1,0 +1,51 @@
+﻿@using PMOS.UI.Web.Models.Worker
+@model WorkerDetailsModel
+
+@{
+    ViewData["Title"] = "Подробнее о сотруднике";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Подробнее о сотруднике</h2>
+
+<div class="card">
+    <div class="form-row">
+        <div class="col-md-6">
+            <!--Имя сотрудника-->
+            <div class="form-group">
+                <label for="name" class="font-weight-bold">Имя:</label>
+                <label id="name">@Model.Name</label>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <!--Фамилия сотрудника-->
+            <div class="form-group">
+                <label for="surname" class="font-weight-bold">Фамилия:</label>
+                <label id="surname">@Model.Surname</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="col-md-6">
+            <!--Отчество сотрудника-->
+            <div class="form-group">
+                <label for="patronymic" class="font-weight-bold">Отчество:</label>
+                <label id="patronymic">@Model.Patronymic</label>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <!--Почта сотрудника-->
+            <div class="form-group">
+                <label for="email" class="font-weight-bold">Почта:</label>
+                <label id="email">@Model.Email</label>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Назад к списку</a>
+    </div>
+
+</div>
+

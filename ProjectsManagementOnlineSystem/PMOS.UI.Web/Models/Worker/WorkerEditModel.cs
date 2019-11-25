@@ -1,42 +1,28 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace PMOS.UI.Web.Models.Account
+namespace PMOS.UI.Web.Models.Worker
 {
     /// <summary>
-    /// Модель страницы регистрации.
+    /// Модель представляющая работника для редактирования.
     /// </summary>
-    public class RegisterViewModel
+    public class WorkerEditModel
     {
-        #region Логин.
+        #region Идентификатор.
         /// <summary>
-        /// Логин.
+        /// Идентификатор.
         /// </summary>
-        [Required(ErrorMessage = "Поле {0} является обязательным.")]
-        [StringLength(100, ErrorMessage = "Поле {0} должно быть не менее {2} символов и максимальная длина должна составлять {1} символов.", MinimumLength = 6)]
-        [Display(Name = "Логин")]
-        public string Login { get; set; }
+        public int Id { get; set; }
         #endregion
 
-        #region Пароль.
+        #region Идентификатор пользователя.
         /// <summary>
-        /// Пароль.
+        /// Идентификатор пользователя.
         /// </summary>
-        [Required(ErrorMessage = "Поле {0} является обязательным.")]
-        [StringLength(100, ErrorMessage = "Поле {0} должно быть не менее {2} символов и максимальная длина должна составлять {1} символов.", MinimumLength = 6)]
-        [DataType(DataType.Password)]
-        [Display(Name = "Пароль")]
-        public string Password { get; set; }
-        #endregion
-
-        #region Подтверждение пароля.
-        /// <summary>
-        /// Подтверждение пароля.
-        /// </summary>
-        [Required(ErrorMessage = "Поле {0} является обязательным.")]
-        [DataType(DataType.Password)]
-        [Display(Name = "Подтверждение пароля")]
-        [Compare(nameof(Password), ErrorMessage = "Поля {0} и {1} не совпадают.")]
-        public string ConfirmPassword { get; set; }
+        public int IdUser { get; set; }
         #endregion
 
         #region Имя.
@@ -78,13 +64,6 @@ namespace PMOS.UI.Web.Models.Account
         [RegularExpression("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$", ErrorMessage = "Недопустимый адрес электронной почты")]
         [Display(Name = "Почта")]
         public string Email { get; set; }
-        #endregion
-
-        #region ID роли.
-        /// <summary>
-        /// ID роли.
-        /// </summary>
-        public int IdRole { get; set; }
         #endregion
     }
 }

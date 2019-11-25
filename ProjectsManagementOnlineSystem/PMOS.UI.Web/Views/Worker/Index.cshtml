@@ -1,0 +1,61 @@
+﻿@using PMOS.UI.Web.Models.Worker
+@model List<WorkerViewModel>
+
+@{
+    ViewData["Title"] = "Список сотрудников";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Список сотрудников</h2>
+
+<!--Верхняя панель-->
+<div id="main-tool-strip" class="tool-strip tool-strip-scroll tool-strip-fixed">
+    <div class="tool-strip-items">
+        <a id="tool-strip-create-button" class="tool-strip-button" asp-controller="Worker" asp-action="Create">
+            <i class="fas fa-plus"></i>
+            <span class="d-sm-inline-block d-none">Создать</span>
+        </a>
+
+        <a id="tool-strip-edit-button" class="tool-strip-button disabled">
+            <i class="fas fa-edit"></i>
+            <span class="d-sm-inline-block d-none">Редактировать</span>
+        </a>
+
+        <a id="tool-strip-details-button" class="tool-strip-button disabled">
+            <i class="fas fa-address-card"></i>
+            <span class="d-sm-inline-block d-none">Подробнее</span>
+        </a>
+
+        <a id="tool-strip-delete-button" class="tool-strip-button disabled">
+            <i class="fas fa-minus-circle"></i>
+            <span class="d-sm-inline-block d-none">Удалить</span>
+        </a>
+    </div>
+</div>
+
+<!--Главня таблица-->
+<div id="main-table" class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th scope="col" class="align-middle">ID</th>
+                <th scope="col" class="align-middle">Имя</th>
+                <th scope="col" class="align-middle">Фамилия</th>
+                <th scope="col" class="align-middle">Отчетсво</th>
+                <th scope="col" class="align-middle">Почта</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr data-edit="@Url.Action("Edit", new {id = item.Id})" data-delete="@Url.Action("Delete", new {id = item.Id})" data-details="@Url.Action("Details", new {id = item.Id})">
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.Surname</td>
+                    <td>@item.Patronymic</td>
+                    <td>@item.Email</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

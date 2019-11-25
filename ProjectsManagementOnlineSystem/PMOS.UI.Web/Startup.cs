@@ -63,7 +63,7 @@ namespace PMOS.UI.Web
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Project}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

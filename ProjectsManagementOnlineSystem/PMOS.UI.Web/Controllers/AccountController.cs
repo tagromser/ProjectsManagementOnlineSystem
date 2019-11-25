@@ -150,7 +150,8 @@ namespace PMOS.UI.Web.Controllers
 
             if (result.Succeeded)
             {
-                await _signInManager.SignInAsync(user, isPersistent: false);
+                if(model.IdRole == 1)
+                    await _signInManager.SignInAsync(user, isPersistent: false);
 
                 return RedirectToLocal(returnUrl);
             }
@@ -207,7 +208,7 @@ namespace PMOS.UI.Web.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction(nameof(ProjectController.Index), "Project");
+            return RedirectToAction(nameof(HomeController.Index), "Home");
         }
         #endregion
         #endregion
@@ -224,7 +225,7 @@ namespace PMOS.UI.Web.Controllers
             if (Url.IsLocalUrl(returnUrl))
                 return Redirect(returnUrl);
 
-            return RedirectToAction(nameof(ProjectController.Index), "Project");
+            return RedirectToAction(nameof(HomeController.Index), "Home");
         }
         #endregion
 

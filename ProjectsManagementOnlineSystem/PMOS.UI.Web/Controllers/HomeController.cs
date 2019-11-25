@@ -38,7 +38,7 @@ namespace PMOS.UI.Web.Controllers
             //        return RedirectToAction("Index", new { pageIndex = totalPages });
             //}
 
-            var projects = await _projectManagementLogic.GetProject();
+            //var projects = await _projectManagementLogic.GetProject();
 
             //var items = projects.Select(project =>
             //    new ProjectViewModel
