@@ -138,6 +138,16 @@ namespace PMOS.Identity.Managers
         {
             Worker worker = await _pmosContext.Workers.FirstOrDefaultAsync(item => item.Id == id);
 
+            var role = (from u in _pmosContext.Users
+                        join ur in _pmosContext.UserRoles on u.Id equals ur.IdUser
+                        join r in _pmosContext.Roles on ur.IdRole equals r.Id
+                        join w in _pmosContext.Workers on u.Id equals w.IdUser
+                        where w.Id == id
+                        select r.Name).FirstOrDefault();
+
+            if (worker == null)
+                throw new ArgumentNullException(nameof(worker));
+
             return new WorkerDTO
             {
                 Id = worker.Id,
@@ -145,7 +155,8 @@ namespace PMOS.Identity.Managers
                 Name = worker.Name,
                 Surname = worker.Surname,
                 Patronymic = worker.Patronymic,
-                Email = worker.Email
+                Email = worker.Email,
+                RoleName = role
             };
         }
         #endregion
@@ -193,10 +204,10 @@ namespace PMOS.Identity.Managers
         /// Удаление работника.
         /// </summary>
         /// <returns>Результат</returns>
-        public async Task<IdentityResult> DeleteWorker(int? id)
+        public async Task<IdentityResult> DeleteWorker(int id)
         {
-            if (id == null)
-                throw new ArgumentNullException(nameof(id));
+            if (id == 0)
+                return IdentityResult.Failed();
 
             Worker worker = _pmosContext.Workers.FirstOrDefault(item => item.Id == id);
             ProjectWorker projectWorker = _pmosContext.ProjectWorkers.FirstOrDefault(item => item.IdWorker == worker.Id);

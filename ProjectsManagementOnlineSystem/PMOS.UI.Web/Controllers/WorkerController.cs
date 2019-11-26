@@ -88,7 +88,8 @@ namespace PMOS.UI.Web.Controllers
                 Name = worker.Name,
                 Surname = worker.Surname,
                 Patronymic = worker.Patronymic,
-                Email = worker.Email
+                Email = worker.Email,
+                RoleName = worker.RoleName
             };
 
             return View(workerDetailsModel);

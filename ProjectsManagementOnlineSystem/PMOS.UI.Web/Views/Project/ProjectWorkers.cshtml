@@ -1,0 +1,55 @@
+﻿@using PMOS.UI.Web.Models.Project
+@model List<ProjectWorkerModel>
+
+@{
+    ViewData["Title"] = "Работники проекта";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Работники проекта</h2>
+
+<!--Верхняя панель-->
+<div id="main-tool-strip" class="tool-strip tool-strip-scroll tool-strip-fixed">
+    <div class="tool-strip-items">
+        <a id="tool-strip-create-button" class="tool-strip-button" asp-controller="Project" asp-action="AddProjectWorker" asp-route-idProject="@ViewBag.IdProject">
+            <i class="fas fa-plus"></i>
+            <span class="d-sm-inline-block d-none">Добавить работника</span>
+        </a>
+
+        <a id="tool-strip-delete-button" class="tool-strip-button disabled">
+            <i class="fas fa-minus-circle"></i>
+            <span class="d-sm-inline-block d-none">Удалить</span>
+        </a>
+    </div>
+</div>
+
+<!--Главня таблица-->
+<div id="main-table" class="table-responsive">
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th scope="col" class="align-middle">ID</th>
+                <th scope="col" class="align-middle">Имя</th>
+                <th scope="col" class="align-middle">Фамилия</th>
+                <th scope="col" class="align-middle">Отчетсво</th>
+                <th scope="col" class="align-middle">Почта</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr data-delete="@Url.Action("DeleteProjectWorker", new {idProjectWorker = item.IdProjectWorker, idProject = ViewBag.IdProject})">
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.Surname</td>
+                    <td>@item.Patronymic</td>
+                    <td>@item.Email</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <a asp-action="Index">Назад к списку</a>
+</div>

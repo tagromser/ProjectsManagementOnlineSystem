@@ -120,8 +120,8 @@ namespace PMOS.UI.Web.Controllers
         /// <summary>
         /// Осуществляет регистрацию в системе. Метод "POST". Адрес: "/Account/Register".
         /// </summary>
-        /// <param name="model"></param>
-        /// <param name="returnUrl"></param>
+        /// <param name="model">Модель страницы авторизации.</param>
+        /// <param name="returnUrl">Адрес на который будет осуществлен переход после авторизации.</param>
         /// <returns></returns>
         [HttpPost]
         [AllowAnonymous]
@@ -160,43 +160,6 @@ namespace PMOS.UI.Web.Controllers
 
             return View(model);
         }
-
-        //[HttpGet]
-        //[AllowAnonymous]
-        //public IActionResult ChangePassword(string returnUrl = null)
-        //{
-        //    ViewData["ReturnUrl"] = returnUrl;
-
-        //    return View();
-        //}
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model, string returnUrl = null)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return View(model);
-        //    }
-
-        //    var user = await _userManager.FindByNameAsync(_userManager.GetUserName(User));
-        //    if (user == null)
-        //    {
-        //        return View(model);
-        //    }
-
-        //    var token = await _userManager.GeneratePasswordResetTokenAsync(user);
-
-        //    var result = await _userManager.ResetPasswordAsync(user, token, model.Password);
-        //    if (result.Succeeded)
-        //    {
-        //        return RedirectToLocal(returnUrl);
-        //    }
-
-        //    AddErrors(result);
-
-        //    return View();
-        //}
 
         #region Осуществляет выход из системы. Метод "POST". Адрес: "/Account/Logout".
         /// <summary>

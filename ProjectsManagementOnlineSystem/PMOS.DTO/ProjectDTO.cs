@@ -56,6 +56,13 @@ namespace PMOS.DTO
         /// </summary>
         public int Priority { get; set; }
         #endregion
+
+        #region ID руководителя проекта.
+        /// <summary>
+        /// ID руководителя проекта.
+        /// </summary>
+        public int IdWorkerProject { get; set; }
+        #endregion
         #endregion
     }
 }

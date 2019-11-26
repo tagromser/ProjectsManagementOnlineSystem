@@ -11,7 +11,6 @@ namespace PMOS.Identity.Infrastructure
         /// <summary>
         /// Руководитель.
         /// </summary>
-        //[StringValue("FORMS")]
         Supervisor = 1,
         #endregion
 

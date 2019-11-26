@@ -13,48 +13,56 @@
         <form asp-controller="Account" asp-action="Register" asp-route-returnurl="/Worker" asp-antiforgery="true" method="post">
             <div asp-validation-summary="All" class="text-danger"></div>
 
+            <!--Логин сотрудника-->
             <div class="form-group">
                 <label asp-for="Login"></label>
                 <input asp-for="Login" class="form-control" />
                 <span asp-validation-for="Login" class="text-danger"></span>
             </div>
 
+            <!--Пароль сотрудника-->
             <div class="form-group">
                 <label asp-for="Password"></label>
                 <input asp-for="Password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
 
+            <!--Подтверждение пароля сотрудника-->
             <div class="form-group">
                 <label asp-for="ConfirmPassword"></label>
                 <input asp-for="ConfirmPassword" class="form-control" />
                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
             </div>
 
+            <!--Имя сотрудника-->
             <div class="form-group">
                 <label asp-for="Name"></label>
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
 
+            <!--Фамилия сотрудника-->
             <div class="form-group">
                 <label asp-for="Surname"></label>
                 <input asp-for="Surname" class="form-control" />
                 <span asp-validation-for="Surname" class="text-danger"></span>
             </div>
 
+            <!--Отчество сотрудника-->
             <div class="form-group">
                 <label asp-for="Patronymic"></label>
                 <input asp-for="Patronymic" class="form-control" />
                 <span asp-validation-for="Patronymic" class="text-danger"></span>
             </div>
 
+            <!--Почта сотрудника-->
             <div class="form-group">
                 <label asp-for="Email"></label>
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
 
+            <!--Роль сотрудника-->
             <div class="form-group">
                 <label asp-for="IdRole">Роль</label>
                 <select class="custom-select form-control" asp-for="IdRole">

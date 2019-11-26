@@ -1,7 +1,66 @@
-﻿
+﻿@using PMOS.UI.Web.Models.Project
+@model ProjectCreateModel
+
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Cоздание проекта";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<h2>Cоздание проекта</h2>
+
+<div class="card">
+    <div class="card-body">
+        <form asp-controller="Project" asp-action="Create" asp-route-returnurl="/Project" asp-antiforgery="true" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <!--Наименование проекта-->
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <!--Название компании-заказчика-->
+            <div class="form-group">
+                <label asp-for="CustomerCompanyName"></label>
+                <input asp-for="CustomerCompanyName" class="form-control" />
+                <span asp-validation-for="CustomerCompanyName" class="text-danger"></span>
+            </div>
+            <!--Название компании-исполнителя-->
+            <div class="form-group">
+                <label asp-for="PerformerCompanyName"></label>
+                <input asp-for="PerformerCompanyName" class="form-control" />
+                <span asp-validation-for="PerformerCompanyName" class="text-danger"></span>
+            </div>
+            <!--Дата начала проекта-->
+            <div class="form-group">
+                <label asp-for="StartDate"></label>
+                <input asp-for="StartDate" type="date" class="form-control" />
+                <span asp-validation-for="StartDate" class="alert-danger"></span>
+            </div>
+            <!--Дата окончания проекта-->
+            <div class="form-group">
+                <label asp-for="EndDate"></label>
+                <input asp-for="EndDate" type="date" class="form-control" />
+                <span asp-validation-for="EndDate" class="alert-danger"></span>
+            </div>
+            <!--Приоритет проекта-->
+            <div class="form-group">
+                <label asp-for="Priority"></label>
+                <select class="custom-select form-control" asp-for="Priority">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option selected="selected" value="3">3</option>
+                </select>
+                <span asp-validation-for="Priority" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Создать</button>
+            </div>
+
+            <div>
+                <a asp-action="Index">Назад к списку</a>
+            </div>
+        </form>
+    </div>
+</div>

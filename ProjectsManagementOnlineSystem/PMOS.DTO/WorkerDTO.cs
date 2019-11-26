@@ -49,6 +49,20 @@ namespace PMOS.DTO
         /// </summary>
         public string Email { get; set; }
         #endregion
+
+        #region Название роли работника.
+        /// <summary>
+        /// Название роли работника.
+        /// </summary>
+        public string RoleName { get; set; }
+        #endregion
+
+        #region id связки работника и проекта.
+        /// <summary>
+        /// id связки работника и проекта.
+        /// </summary>
+        public int IdProjectWorker { get; set; }
+        #endregion
         #endregion
     }
 }

@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PMOS.DataAccess\PMOS.DataAccess.csproj" />
+    <ProjectReference Include="..\PMOS.DTO\PMOS.DTO.csproj" />
   </ItemGroup>
 
 </Project>

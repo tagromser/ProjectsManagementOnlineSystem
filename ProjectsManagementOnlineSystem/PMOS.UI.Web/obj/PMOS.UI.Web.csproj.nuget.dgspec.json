@@ -209,6 +209,9 @@
             "projectReferences": {
               "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DataAccess\\PMOS.DataAccess.csproj": {
                 "projectPath": "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DataAccess\\PMOS.DataAccess.csproj"
+              },
+              "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DTO\\PMOS.DTO.csproj": {
+                "projectPath": "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DTO\\PMOS.DTO.csproj"
               }
             }
           }

@@ -1,0 +1,51 @@
+﻿@using PMOS.UI.Web.Models.Project
+@model ProjectDetailsModel
+
+@{
+    ViewData["Title"] = "Подробнее о проекте";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Подробнее о проекте</h2>
+
+<div class="card">
+    <div class="form-group">
+        <label class="font-weight-bold">Название проекта:</label>
+        <label>@Model.Name</label>
+    </div>
+
+    <div class="form-group">
+        <label class="font-weight-bold">Название компании-заказчика:</label>
+        <label>@Model.CustomerCompanyName</label>
+    </div>
+
+    <div class="form-group">
+        <label class="font-weight-bold">Название компании-исполнителя:</label>
+        <label>@Model.PerformerCompanyName</label>
+    </div>
+
+    <div class="form-group">
+        <label class="font-weight-bold">Дата начала проекта:</label>
+        <label>@Model.StartDate.ToShortDateString()</label>
+    </div>
+
+    <div class="form-group">
+        <label class="font-weight-bold">Дата окончания проекта:</label>
+        <label>@Model.EndDate.ToShortDateString()</label>
+    </div>
+
+    <div class="form-group">
+        <label class="font-weight-bold">Приоритет проекта:</label>
+        <label>@Model.Priority</label>
+    </div>
+
+    <div class="form-group">
+        <label class="font-weight-bold">ФИО руководителя проекта:</label>
+        <label>@Model.FIOWorkerProject</label>
+    </div>
+
+    <div>
+        <a asp-action="Index">Назад к списку</a>
+    </div>
+
+</div>

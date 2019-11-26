@@ -24,12 +24,6 @@ namespace PMOS.Identity.Infrastructure
             services.AddTransient<UserManager>();
             services.AddTransient<IUserStore<UserDTO>, UserStore<UserDTO>>();
             services.AddTransient<IRoleStore<RoleDTO>, RoleStore<RoleDTO>>();
-
-
-            //services.AddIdentity<ApplicationUser, ApplicationRole>().AddDefaultTokenProviders();
-
-            //services.AddTransient<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>();
-            //services.AddTransient<IRoleStore<ApplicationRole>, RoleStore<ApplicationRole>>();
         }
         #endregion
     }

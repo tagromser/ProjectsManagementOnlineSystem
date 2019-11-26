@@ -9,3 +9,5 @@ E:\Activity\Sibers\TestTasks\ProjectsManagementOnlineSystem\ProjectsManagementOn
 E:\Activity\Sibers\TestTasks\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.Logic\obj\Debug\netcoreapp2.0\PMOS.Logic.csproj.CopyComplete
 E:\Activity\Sibers\TestTasks\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.Logic\obj\Debug\netcoreapp2.0\PMOS.Logic.dll
 E:\Activity\Sibers\TestTasks\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.Logic\obj\Debug\netcoreapp2.0\PMOS.Logic.pdb
+E:\Activity\Sibers\TestTasks\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.Logic\bin\Debug\netcoreapp2.0\PMOS.DTO.dll
+E:\Activity\Sibers\TestTasks\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.Logic\bin\Debug\netcoreapp2.0\PMOS.DTO.pdb

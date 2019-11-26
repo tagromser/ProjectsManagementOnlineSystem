@@ -44,5 +44,12 @@ namespace PMOS.UI.Web.Models.Worker
         /// </summary>
         public string Email { get; set; }
         #endregion
+
+        #region Название роли работника.
+        /// <summary>
+        /// Название роли работника.
+        /// </summary>
+        public string RoleName { get; set; }
+        #endregion
     }
 }

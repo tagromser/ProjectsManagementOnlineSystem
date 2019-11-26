@@ -5071,6 +5071,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
         "dependencies": {
+          "PMOS.DTO": "1.0.0",
           "PMOS.DataAccess": "1.0.0"
         },
         "compile": {

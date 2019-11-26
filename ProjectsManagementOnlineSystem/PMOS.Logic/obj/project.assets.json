@@ -885,6 +885,16 @@
         "runtime": {
           "bin/placeholder/PMOS.DataAccess.dll": {}
         }
+      },
+      "PMOS.DTO/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.0",
+        "compile": {
+          "bin/placeholder/PMOS.DTO.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PMOS.DTO.dll": {}
+        }
       }
     }
   },
@@ -3452,11 +3462,17 @@
       "type": "project",
       "path": "../PMOS.DataAccess/PMOS.DataAccess.csproj",
       "msbuildProject": "../PMOS.DataAccess/PMOS.DataAccess.csproj"
+    },
+    "PMOS.DTO/1.0.0": {
+      "type": "project",
+      "path": "../PMOS.DTO/PMOS.DTO.csproj",
+      "msbuildProject": "../PMOS.DTO/PMOS.DTO.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
       "Microsoft.NETCore.App >= 2.0.0",
+      "PMOS.DTO >= 1.0.0",
       "PMOS.DataAccess >= 1.0.0"
     ]
   },
@@ -3488,6 +3504,9 @@
           "projectReferences": {
             "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DataAccess\\PMOS.DataAccess.csproj": {
               "projectPath": "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DataAccess\\PMOS.DataAccess.csproj"
+            },
+            "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DTO\\PMOS.DTO.csproj": {
+              "projectPath": "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DTO\\PMOS.DTO.csproj"
             }
           }
         }

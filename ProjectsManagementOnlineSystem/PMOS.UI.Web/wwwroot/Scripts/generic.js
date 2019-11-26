@@ -11,19 +11,19 @@
              * @param editButtonQuery - Имя элемента содержащего кнопку "Редактировать".
              * @param deleteButtonQuery - Имя элемента содержащего кнопку "Удалить".
              * @param detailsButtonQuery - Имя элемента содержащего кнопку "Подробнее".
+             * @param detailsButtonQuery - Имя элемента содержащего кнопку "Работники проекта".
              * @param tableQuery - Имя элемента содержащего таблицу с данными.
              */
-            function ViewIndex(editButtonQuery, deleteButtonQuery, detailsButtonQuery, tableQuery) {
+            function ViewIndex(editButtonQuery, deleteButtonQuery, detailsButtonQuery, workersButtonQuery, tableQuery) {
                 var editButton = document.querySelector(editButtonQuery);
                 var deleteButton = document.querySelector(deleteButtonQuery);
                 var detailsButton = document.querySelector(detailsButtonQuery);
+                var workersButton = document.querySelector(workersButtonQuery);
                 var table = document.querySelector(tableQuery);
-                //Если элементы не найдены.
-                if (!editButton || !deleteButton || !detailsButton || !table)
-                    return;
                 this.editButton = editButton;
                 this.deleteButton = deleteButton;
                 this.detailsButton = detailsButton;
+                this.workersButton = workersButton;
                 this.table = table;
                 this.initializeEvents();
             }
@@ -53,15 +53,18 @@
                     selectedRow.classList.remove("table-active");
                 }
                 row.classList.add("table-active");
-                this.editButton.href = row.dataset["edit"];
                 this.deleteButton.href = row.dataset["delete"];
+                this.editButton.href = row.dataset["edit"];
                 this.detailsButton.href = row.dataset["details"];
+                this.workersButton.href = row.dataset["workers"];
                 if (this.editButton.classList.contains("disabled"))
                     this.editButton.classList.remove("disabled");
                 if (this.deleteButton.classList.contains("disabled"))
                     this.deleteButton.classList.remove("disabled");
                 if (this.detailsButton.classList.contains("disabled"))
                     this.detailsButton.classList.remove("disabled");
+                if (this.workersButton.classList.contains("disabled"))
+                    this.workersButton.classList.remove("disabled");
                 this.deleteButton.onclick = function (event) { return _this.deleteButtonClick(event); };
             };
             /**
@@ -90,7 +93,7 @@
          * Инициализирует скрипт выполняемый на главной странице с таблицей.
          */
         function initializeViewIndex() {
-            var viewIndex = new ViewIndex_1.ViewIndex("#tool-strip-edit-button", "#tool-strip-delete-button", "#tool-strip-details-button", "#main-table");
+            var viewIndex = new ViewIndex_1.ViewIndex("#tool-strip-edit-button", "#tool-strip-delete-button", "#tool-strip-details-button", "#tool-strip-workers-button", "#main-table");
         }
         window.addEventListener("load", initialize);
     }, { "./ViewIndex": 1 }]

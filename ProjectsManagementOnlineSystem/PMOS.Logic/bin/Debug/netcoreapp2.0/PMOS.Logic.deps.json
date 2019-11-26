@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v2.0": {
       "PMOS.Logic/1.0.0": {
         "dependencies": {
+          "PMOS.DTO": "1.0.0",
           "PMOS.DataAccess": "1.0.0"
         },
         "runtime": {
@@ -459,6 +460,11 @@
         "runtime": {
           "PMOS.DataAccess.dll": {}
         }
+      },
+      "PMOS.DTO/1.0.0": {
+        "runtime": {
+          "PMOS.DTO.dll": {}
+        }
       }
     }
   },
@@ -819,6 +825,11 @@
       "hashPath": "system.threading.tasks.4.0.11.nupkg.sha512"
     },
     "PMOS.DataAccess/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PMOS.DTO/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
