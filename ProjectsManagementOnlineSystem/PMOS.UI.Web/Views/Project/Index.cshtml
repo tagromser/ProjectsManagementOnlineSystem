@@ -1,9 +1,18 @@
-﻿@using PMOS.UI.Web.Models.Project
+﻿@using PMOS.DTO.Account
+@using PMOS.Identity.Managers
+@using PMOS.UI.Web.Models.Project
 @model List<ProjectViewModel>
+
+@inject UserManager UserManager
 
 @{
     ViewData["Title"] = "Список проектов";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var userName = UserManager.GetUserName(User);
+    UserDTO userDTO = await UserManager.FindByNameAsync(userName);
+
+    IList<string> roles = await UserManager.GetRolesAsync(userDTO);
 }
 
 <h2>Список проектов</h2>
@@ -11,31 +20,46 @@
 <!--Верхняя панель-->
 <div id="main-tool-strip" class="tool-strip tool-strip-scroll tool-strip-fixed">
     <div class="tool-strip-items">
-        <a id="tool-strip-create-button" class="tool-strip-button" asp-controller="Project" asp-action="Create">
-            <i class="fas fa-plus"></i>
-            <span class="d-sm-inline-block d-none">Создать</span>
-        </a>
+        @if (roles.Contains("Supervisor"))
+        {
+            <a id="tool-strip-create-button" class="tool-strip-button" asp-controller="Project" asp-action="Create">
+                <i class="fas fa-plus"></i>
+                <span class="d-sm-inline-block d-none">Создать</span>
+            </a>
+        }
 
-        <a id="tool-strip-workers-button" class="tool-strip-button disabled">
-            <i class="fas fa-users"></i>
-            <span class="d-sm-inline-block d-none">Работники проекта</span>
-        </a>
+        @if (roles.Contains("Supervisor") || roles.Contains("ProjectManager"))
+        {
+            <a id="tool-strip-workers-button" class="tool-strip-button disabled">
+                <i class="fas fa-users"></i>
+                <span class="d-sm-inline-block d-none">Работники проекта</span>
+            </a>
+        }
 
-        <a id="tool-strip-edit-button" class="tool-strip-button disabled">
-            <i class="fas fa-edit"></i>
-            <span class="d-sm-inline-block d-none">Редактировать</span>
-        </a>
+        @if (roles.Contains("Supervisor"))
+        {
+            <a id="tool-strip-edit-button" class="tool-strip-button disabled">
+                <i class="fas fa-edit"></i>
+                <span class="d-sm-inline-block d-none">Редактировать</span>
+            </a>
+        }
 
-        <a id="tool-strip-details-button" class="tool-strip-button disabled">
-            <i class="fas fa-address-card"></i>
-            <span class="d-sm-inline-block d-none">Подробнее</span>
-        </a>
+        @if (roles.Contains("Supervisor"))
+        {
+            <a id="tool-strip-details-button" class="tool-strip-button disabled">
+                <i class="fas fa-address-card"></i>
+                <span class="d-sm-inline-block d-none">Подробнее</span>
+            </a>
+        }
 
-        <a id="tool-strip-delete-button" class="tool-strip-button disabled">
-            <i class="fas fa-minus-circle"></i>
-            <span class="d-sm-inline-block d-none">Удалить</span>
-        </a>
-    </div>
+        @if (roles.Contains("Supervisor"))
+        {
+            <a id="tool-strip-delete-button" class="tool-strip-button disabled">
+                <i class="fas fa-minus-circle"></i>
+                <span class="d-sm-inline-block d-none">Удалить</span>
+            </a>
+        }
+        </div>
 </div>
 
 <!--Главня таблица-->

@@ -53,10 +53,14 @@
                     selectedRow.classList.remove("table-active");
                 }
                 row.classList.add("table-active");
-                this.deleteButton.href = row.dataset["delete"];
-                this.editButton.href = row.dataset["edit"];
-                this.detailsButton.href = row.dataset["details"];
-                this.workersButton.href = row.dataset["workers"];
+                if (this.deleteButton != null) 
+                    this.deleteButton.href = row.dataset["delete"];
+                if (this.editButton != null) 
+                    this.editButton.href = row.dataset["edit"];
+                if (this.detailsButton != null) 
+                    this.detailsButton.href = row.dataset["details"];
+                if (this.workersButton!= null) 
+                    this.workersButton.href = row.dataset["workers"];
                 if (this.editButton.classList.contains("disabled"))
                     this.editButton.classList.remove("disabled");
                 if (this.deleteButton.classList.contains("disabled"))

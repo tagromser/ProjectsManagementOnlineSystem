@@ -1,8 +1,10 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using PMOS.DTO.Account
+@using PMOS.Identity.Managers
+@using PMOS.Identity.Infrastructure
 
 @inject SignInManager<UserDTO> SignInManager
-@inject UserManager<UserDTO> UserManager
+@inject UserManager UserManager
 
 <!DOCTYPE html>
 <html>
@@ -24,17 +26,26 @@
         }
         else
         {
+            var userName = UserManager.GetUserName(User);
+            UserDTO userDTO = await UserManager.FindByNameAsync(userName);
+
+            IList<string> roles = await UserManager.GetRolesAsync(userDTO);
+            
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
                         <a asp-controller="Home" asp-action="Index" class="nav-link navbar-brand">Главная</a>
                     </li>
-                    <li class="nav-item">
-                        <a asp-controller="Worker" asp-action="Index" class="nav-link">Управление сотрудниками</a>
-                    </li>
-                    <li class="nav-item">
-                        <a asp-controller="Project" asp-action="Index" class="nav-link">Управление проектами</a>
-                    </li>
+                    @if (roles.Contains("Supervisor"))
+                    {
+                        <li class="nav-item">
+                            <a asp-controller="Worker" asp-action="Index" class="nav-link">Управление сотрудниками</a>
+                        </li>
+                     }
+                        <li class="nav-item">
+                            <a asp-controller="Project" asp-action="Index" class="nav-link">Управление проектами</a>
+                        </li>
+                    
                 </ul>
 
                 <ul class="nav justify-content-end">
