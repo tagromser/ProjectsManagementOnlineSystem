@@ -13829,11 +13829,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.UI.Web\\PMOS.UI.Web.csproj",
+      "projectUniqueName": "D:\\UserLibraries\\Downloads\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.UI.Web\\PMOS.UI.Web.csproj",
       "projectName": "PMOS.UI.Web",
-      "projectPath": "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.UI.Web\\PMOS.UI.Web.csproj",
+      "projectPath": "D:\\UserLibraries\\Downloads\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.UI.Web\\PMOS.UI.Web.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.UI.Web\\obj\\",
+      "outputPath": "D:\\UserLibraries\\Downloads\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.UI.Web\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -13849,11 +13849,11 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.Identity\\PMOS.Identity.csproj": {
-              "projectPath": "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.Identity\\PMOS.Identity.csproj"
+            "D:\\UserLibraries\\Downloads\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.Identity\\PMOS.Identity.csproj": {
+              "projectPath": "D:\\UserLibraries\\Downloads\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.Identity\\PMOS.Identity.csproj"
             },
-            "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.Logic\\PMOS.Logic.csproj": {
-              "projectPath": "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.Logic\\PMOS.Logic.csproj"
+            "D:\\UserLibraries\\Downloads\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.Logic\\PMOS.Logic.csproj": {
+              "projectPath": "D:\\UserLibraries\\Downloads\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.Logic\\PMOS.Logic.csproj"
             }
           }
         }

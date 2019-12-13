@@ -681,11 +681,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DTO\\PMOS.DTO.csproj",
+      "projectUniqueName": "D:\\UserLibraries\\Downloads\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DTO\\PMOS.DTO.csproj",
       "projectName": "PMOS.DTO",
-      "projectPath": "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DTO\\PMOS.DTO.csproj",
+      "projectPath": "D:\\UserLibraries\\Downloads\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DTO\\PMOS.DTO.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "E:\\Activity\\Sibers\\TestTasks\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DTO\\obj\\",
+      "outputPath": "D:\\UserLibraries\\Downloads\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DTO\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,0 +1,10 @@
+Использовалось:
+Система - ASP.NET Core 2;
+База данных - MSSQL;
+ORM - Entity Framework Core 2;
+Авторизация - AspNetCore Identity 2;
+
+Фронтенд:
+Bootstrap-4.0.0;
+Jquery-3.3.1;
+FontAwesome-5.0.13;
