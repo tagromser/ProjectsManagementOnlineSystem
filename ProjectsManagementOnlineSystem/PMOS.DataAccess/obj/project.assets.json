@@ -3448,11 +3448,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\UserLibraries\\Downloads\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DataAccess\\PMOS.DataAccess.csproj",
+      "projectUniqueName": "E:\\Activity\\_own\\GitHub\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DataAccess\\PMOS.DataAccess.csproj",
       "projectName": "PMOS.DataAccess",
-      "projectPath": "D:\\UserLibraries\\Downloads\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DataAccess\\PMOS.DataAccess.csproj",
+      "projectPath": "E:\\Activity\\_own\\GitHub\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DataAccess\\PMOS.DataAccess.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "D:\\UserLibraries\\Downloads\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DataAccess\\obj\\",
+      "outputPath": "E:\\Activity\\_own\\GitHub\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DataAccess\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",

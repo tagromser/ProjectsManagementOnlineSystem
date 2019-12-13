@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\UserLibraries\\Downloads\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.Logic\\PMOS.Logic.csproj": {}
+    "E:\\Activity\\_own\\GitHub\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.Logic\\PMOS.Logic.csproj": {}
   },
   "projects": {
-    "D:\\UserLibraries\\Downloads\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DataAccess\\PMOS.DataAccess.csproj": {
+    "E:\\Activity\\_own\\GitHub\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DataAccess\\PMOS.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\UserLibraries\\Downloads\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DataAccess\\PMOS.DataAccess.csproj",
+        "projectUniqueName": "E:\\Activity\\_own\\GitHub\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DataAccess\\PMOS.DataAccess.csproj",
         "projectName": "PMOS.DataAccess",
-        "projectPath": "D:\\UserLibraries\\Downloads\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DataAccess\\PMOS.DataAccess.csproj",
+        "projectPath": "E:\\Activity\\_own\\GitHub\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DataAccess\\PMOS.DataAccess.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\UserLibraries\\Downloads\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DataAccess\\obj\\",
+        "outputPath": "E:\\Activity\\_own\\GitHub\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -63,14 +63,14 @@
         }
       }
     },
-    "D:\\UserLibraries\\Downloads\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DTO\\PMOS.DTO.csproj": {
+    "E:\\Activity\\_own\\GitHub\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DTO\\PMOS.DTO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\UserLibraries\\Downloads\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DTO\\PMOS.DTO.csproj",
+        "projectUniqueName": "E:\\Activity\\_own\\GitHub\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DTO\\PMOS.DTO.csproj",
         "projectName": "PMOS.DTO",
-        "projectPath": "D:\\UserLibraries\\Downloads\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DTO\\PMOS.DTO.csproj",
+        "projectPath": "E:\\Activity\\_own\\GitHub\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DTO\\PMOS.DTO.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\UserLibraries\\Downloads\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DTO\\obj\\",
+        "outputPath": "E:\\Activity\\_own\\GitHub\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DTO\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -118,14 +118,14 @@
         }
       }
     },
-    "D:\\UserLibraries\\Downloads\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.Logic\\PMOS.Logic.csproj": {
+    "E:\\Activity\\_own\\GitHub\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.Logic\\PMOS.Logic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\UserLibraries\\Downloads\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.Logic\\PMOS.Logic.csproj",
+        "projectUniqueName": "E:\\Activity\\_own\\GitHub\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.Logic\\PMOS.Logic.csproj",
         "projectName": "PMOS.Logic",
-        "projectPath": "D:\\UserLibraries\\Downloads\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.Logic\\PMOS.Logic.csproj",
+        "projectPath": "E:\\Activity\\_own\\GitHub\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.Logic\\PMOS.Logic.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\UserLibraries\\Downloads\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.Logic\\obj\\",
+        "outputPath": "E:\\Activity\\_own\\GitHub\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.Logic\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -141,11 +141,11 @@
         "frameworks": {
           "netcoreapp2.0": {
             "projectReferences": {
-              "D:\\UserLibraries\\Downloads\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DataAccess\\PMOS.DataAccess.csproj": {
-                "projectPath": "D:\\UserLibraries\\Downloads\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DataAccess\\PMOS.DataAccess.csproj"
+              "E:\\Activity\\_own\\GitHub\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DataAccess\\PMOS.DataAccess.csproj": {
+                "projectPath": "E:\\Activity\\_own\\GitHub\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DataAccess\\PMOS.DataAccess.csproj"
               },
-              "D:\\UserLibraries\\Downloads\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DTO\\PMOS.DTO.csproj": {
-                "projectPath": "D:\\UserLibraries\\Downloads\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DTO\\PMOS.DTO.csproj"
+              "E:\\Activity\\_own\\GitHub\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DTO\\PMOS.DTO.csproj": {
+                "projectPath": "E:\\Activity\\_own\\GitHub\\ProjectsManagementOnlineSystem\\ProjectsManagementOnlineSystem\\PMOS.DTO\\PMOS.DTO.csproj"
               }
             }
           }
