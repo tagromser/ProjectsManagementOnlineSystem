@@ -5056,7 +5056,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.0",
         "dependencies": {
-          "Microsoft.AspNetCore.Identity": "2.0.0",
+          "Microsoft.AspNetCore.Identity": "2.0.4",
           "PMOS.DTO": "1.0.0",
           "PMOS.DataAccess": "1.0.0"
         },

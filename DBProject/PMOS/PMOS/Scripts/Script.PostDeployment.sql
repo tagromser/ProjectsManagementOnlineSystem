@@ -16,18 +16,18 @@
 --[PMOS].[Role]
 ----------------------------------------------------------------------------------------
 --*/
-INSERT INTO [PMOS].[Role] ([Name]) VALUES (N'Supervisor')
-INSERT INTO [PMOS].[Role] ([Name]) VALUES (N'ProjectManager')
-INSERT INTO [PMOS].[Role] ([Name]) VALUES (N'Employee')
+INSERT INTO [PMOS].[Role] ([Name],[SystemName]) VALUES (N'Supervisor', N'Руководитель')
+INSERT INTO [PMOS].[Role] ([Name],[SystemName]) VALUES (N'ProjectManager','Руководитель проекта')
+INSERT INTO [PMOS].[Role] ([Name],[SystemName]) VALUES (N'Employee', N'Сотрудник')
 
 --/*
 ----------------------------------------------------------------------------------------
 --[PMOS].[Status]
 ----------------------------------------------------------------------------------------
 --*/
-INSERT INTO [PMOS].[Status] ([Name]) VALUES (N'ToDo')
-INSERT INTO [PMOS].[Status] ([Name]) VALUES (N'InProgress')
-INSERT INTO [PMOS].[Status] ([Name]) VALUES (N'Done')
+INSERT INTO [PMOS].[Status] ([Name],[SystemName]) VALUES (N'ToDo', N'На рассмотрении')
+INSERT INTO [PMOS].[Status] ([Name],[SystemName]) VALUES (N'InProgress', N'В процессе')
+INSERT INTO [PMOS].[Status] ([Name],[SystemName]) VALUES (N'Done', N'Сделано')
 
 -- Проверка и добавление пользователя на сервер
 IF SUSER_ID('PMOS') IS NULL

@@ -11,9 +11,6 @@
 )
 GO
 
-CREATE INDEX [IX_Project_Name] ON [PMOS].[Project] ([Name])
-GO
-
 EXEC sp_addextendedproperty @name = N'MS_Description',
     @value = N'Идентификатор проекта.',
     @level0type = N'SCHEMA',

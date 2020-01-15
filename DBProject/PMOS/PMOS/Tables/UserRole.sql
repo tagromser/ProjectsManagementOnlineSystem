@@ -9,9 +9,6 @@
 )
 GO
 
-CREATE INDEX [IX_UserRole_IdUser_IdRole] ON [PMOS].[UserRole] ([ID_User], [ID_Role])
-GO
-
 EXEC sp_addextendedproperty @name = N'MS_Description',
     @value = N'Идентификатор связи роли и пользователя.',
     @level0type = N'SCHEMA',

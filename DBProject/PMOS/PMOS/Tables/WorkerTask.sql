@@ -10,9 +10,6 @@
 )
 GO
 
-CREATE INDEX [IX_WorkerTask_IdWorker_IdTask] ON [PMOS].[WorkerTask] ([ID_Worker], [ID_Task])
-GO
-
 EXEC sp_addextendedproperty @name = N'MS_Description',
     @value = N'Идентификатор связи работника и задачи.',
     @level0type = N'SCHEMA',

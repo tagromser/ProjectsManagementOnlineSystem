@@ -9,9 +9,6 @@
 )
 GO
 
-CREATE INDEX [IX_ProjectWorker_IdProject_IdWorker] ON [PMOS].[ProjectWorker] ([ID_Project], [ID_Worker])
-GO
-
 EXEC sp_addextendedproperty @name = N'MS_Description',
     @value = N'Идентификатор связи проекта и работника.',
     @level0type = N'SCHEMA',

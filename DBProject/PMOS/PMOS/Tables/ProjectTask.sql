@@ -9,9 +9,6 @@
 )
 GO
 
-CREATE INDEX [IX_ProjectTask_IdProject_IdTask] ON [PMOS].[ProjectTask] ([ID_Project], [ID_Task])
-GO
-
 GO
 EXEC sp_addextendedproperty @name = N'MS_Description',
     @value = N'Идентификатор связи проекта и задачи.',
@@ -39,3 +36,4 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level1name = N'ProjectTask',
     @level2type = N'COLUMN',
     @level2name = N'ID_Task'
+GO

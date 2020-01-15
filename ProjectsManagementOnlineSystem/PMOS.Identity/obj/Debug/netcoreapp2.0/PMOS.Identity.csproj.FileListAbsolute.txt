@@ -1,0 +1,5 @@
+E:\Activity\_own\GitHub\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.Identity\bin\Debug\netcoreapp2.0\PMOS.DataAccess.dll
+E:\Activity\_own\GitHub\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.Identity\bin\Debug\netcoreapp2.0\PMOS.DTO.dll
+E:\Activity\_own\GitHub\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.Identity\obj\Debug\netcoreapp2.0\PMOS.Identity.csprojAssemblyReference.cache
+E:\Activity\_own\GitHub\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.Identity\obj\Debug\netcoreapp2.0\PMOS.Identity.AssemblyInfoInputs.cache
+E:\Activity\_own\GitHub\ProjectsManagementOnlineSystem\ProjectsManagementOnlineSystem\PMOS.Identity\obj\Debug\netcoreapp2.0\PMOS.Identity.AssemblyInfo.cs

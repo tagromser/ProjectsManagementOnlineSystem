@@ -2,7 +2,8 @@
 (
 	[ID] INT IDENTITY NOT NULL, 
     [Name] NVARCHAR(12) NOT NULL,
-	CONSTRAINT [PK_Status] PRIMARY KEY ([ID])
+	[SystemName] NVARCHAR(12) NOT NULL, 
+    CONSTRAINT [PK_Status] PRIMARY KEY ([ID])
 )
 GO
 
@@ -27,3 +28,11 @@ EXEC sp_addextendedproperty @name = N'MS_Description',
     @level2type = N'COLUMN',
     @level2name = N'Name'
 GO
+EXEC sp_addextendedproperty @name = N'MS_Description',
+    @value = N'Системное имя статуса.',
+    @level0type = N'SCHEMA',
+    @level0name = N'PMOS',
+    @level1type = N'TABLE',
+    @level1name = N'Status',
+    @level2type = N'COLUMN',
+    @level2name = N'SystemName'
