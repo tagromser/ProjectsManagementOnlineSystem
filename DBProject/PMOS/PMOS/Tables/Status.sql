@@ -1,8 +1,8 @@
 ﻿CREATE TABLE [PMOS].[Status]
 (
 	[ID] INT IDENTITY NOT NULL, 
-    [Name] NVARCHAR(12) NOT NULL,
-	[SystemName] NVARCHAR(12) NOT NULL, 
+    [Name] NVARCHAR(20) NOT NULL,
+	[SystemName] NVARCHAR(20) NOT NULL, 
     CONSTRAINT [PK_Status] PRIMARY KEY ([ID])
 )
 GO

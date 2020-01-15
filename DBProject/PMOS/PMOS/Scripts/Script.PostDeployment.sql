@@ -17,7 +17,7 @@
 ----------------------------------------------------------------------------------------
 --*/
 INSERT INTO [PMOS].[Role] ([Name],[SystemName]) VALUES (N'Supervisor', N'Руководитель')
-INSERT INTO [PMOS].[Role] ([Name],[SystemName]) VALUES (N'ProjectManager','Руководитель проекта')
+INSERT INTO [PMOS].[Role] ([Name],[SystemName]) VALUES (N'ProjectManager', N'Руководитель проекта')
 INSERT INTO [PMOS].[Role] ([Name],[SystemName]) VALUES (N'Employee', N'Сотрудник')
 
 --/*
