@@ -14,16 +14,19 @@ namespace PMOS.UI.Web.Controllers
         /// </summary>
         public HomeController(IProjectManagementLogic projectManagementLogic)
         {
-            _projectManagementLogic = projectManagementLogic;
+            this.projectManagementLogic = projectManagementLogic;
         }
         #endregion
 
         #region Локальные переменные
-        private readonly IProjectManagementLogic _projectManagementLogic;
+        /// <summary>
+        /// Предоставляет API для управления проектами.
+        /// </summary>
+        private readonly IProjectManagementLogic projectManagementLogic;
         #endregion
 
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             return View();
         }

@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PMOS.DataAccess.Model.PMOS.Tables;
+using PMOS.DataAccess.Model.PMOS.Physical;
 
 namespace PMOS.DataAccess.Context
 {

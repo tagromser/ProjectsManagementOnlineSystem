@@ -50,19 +50,7 @@ namespace PMOS.Identity.Stores
             //Освобождаем неуправляемые объекты.
             _disposed = true;
         }
-        #endregion
-        #endregion
 
-        #region private методы
-        #region Проверка на то dispose или нет, если dispose выдает сообщение об ошибке.
-        /// <summary>
-        /// Проверка на то dispose или нет, если dispose выдает сообщение об ошибке.
-        /// </summary>
-        private void ThrowIfDisposed()
-        {
-            if (_disposed)
-                throw new ObjectDisposedException(GetType().Name);
-        }
         #endregion
         #endregion
     }

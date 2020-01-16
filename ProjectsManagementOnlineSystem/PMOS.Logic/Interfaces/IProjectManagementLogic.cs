@@ -1,5 +1,4 @@
 ﻿using PMOS.DTO;
-using PMOS.Logic.Common;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -31,7 +30,7 @@ namespace PMOS.Logic.Interfaces
         /// Создание проекте.
         /// </summary>
         /// <returns>Результат</returns>
-        Task<OperationResult> CreateProject(ProjectDTO projectDTO);
+        Task<bool> CreateProject(ProjectDTO projectDTO);
         #endregion
 
         #region Обновление информации о работнике.
@@ -39,7 +38,7 @@ namespace PMOS.Logic.Interfaces
         /// Обновление информации о работнике.
         /// </summary>
         /// <returns>Результат</returns>
-        Task<OperationResult> UpdateProject(ProjectDTO projectDTO);
+        Task<bool> UpdateProject(ProjectDTO projectDTO);
         #endregion
 
         #region Удаление проекта.
@@ -47,7 +46,7 @@ namespace PMOS.Logic.Interfaces
         /// Удаление проекта.
         /// </summary>
         /// <returns>Результат</returns>
-        Task<OperationResult> DeleteProject(int id);
+        Task<bool> DeleteProject(int id);
         #endregion
 
         #region Получение рабочего по id пользователя.
@@ -55,7 +54,7 @@ namespace PMOS.Logic.Interfaces
         /// Получение рабочего по id пользователя.
         /// </summary>
         /// <returns>Рабочего</returns>
-        Task<WorkerDTO> GetWorkerProjectByIdUser(int id);
+        WorkerDTO GetWorkerProjectByIdUser(int id);
         #endregion
 
         #region Получение рабочих по id проекта.
@@ -71,7 +70,7 @@ namespace PMOS.Logic.Interfaces
         /// Удаление рабочего с проекта.
         /// </summary>
         /// <returns>Результат</returns>
-        Task<OperationResult> DeleteProjectWorker(int idProjectWorker);
+        Task<bool> DeleteProjectWorker(int idProjectWorker);
         #endregion
 
         #region Получает список работников для добавления к проекту.
@@ -79,7 +78,7 @@ namespace PMOS.Logic.Interfaces
         /// Получает список работников для добавления к проекту.
         /// </summary>
         /// <returns>Список работников.</returns>
-        Task<IEnumerable<WorkerDTO>> GetWorkersForAdding(int idProject);
+        Task<IEnumerable<WorkerDTO>> GetWorkersForAdding();
         #endregion
 
         #region Добавление рабочего к проекту.

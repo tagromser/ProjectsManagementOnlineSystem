@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using PMOS.DataAccess.Context;
-using PMOS.DataAccess.Model.PMOS.Tables;
 using PMOS.DTO;
 using PMOS.DTO.Account;
 using Microsoft.AspNetCore.Identity;
@@ -12,6 +11,7 @@ using Task = System.Threading.Tasks.Task;
 using PMOS.Identity.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using PMOS.DataAccess.Model.PMOS.Physical;
 
 namespace PMOS.Identity.Managers
 {
@@ -40,7 +40,7 @@ namespace PMOS.Identity.Managers
             IdentityErrorDescriber errors, IServiceProvider services, ILogger<UserManager<UserDTO>> logger, PMOSContext pmosContext) : base(store,
             optionsAccessor, passwordHasher, userValidators, passwordValidators, keyNormalizer, errors, services, logger)
         {
-            _pmosContext = pmosContext;
+            this.pmosContext = pmosContext;
         }
         #endregion
 
@@ -49,7 +49,7 @@ namespace PMOS.Identity.Managers
         /// <summary>
         /// Контекст для работы с базой данных.
         /// </summary>
-        private readonly PMOSContext _pmosContext;
+        private readonly PMOSContext pmosContext;
         #endregion
         #endregion
 
@@ -75,7 +75,7 @@ namespace PMOS.Identity.Managers
 
                 if (!await IsInRoleAsync(userDTO, Enum.GetName(typeof(SystemRoles), idRole)))
                 {
-                    _pmosContext.UserRoles.Add(new UserRole
+                    pmosContext.UserRoles.Add(new UserRole
                     {
                         IdUser = userDTO.Id,
                         IdRole = idRole
@@ -92,9 +92,9 @@ namespace PMOS.Identity.Managers
                     Email = workerDTO.Email
                 };
 
-                _pmosContext.Workers.Add(worker);
+                pmosContext.Workers.Add(worker);
 
-                await _pmosContext.SaveChangesAsync();
+                await pmosContext.SaveChangesAsync();
                 #endregion
             }
             catch (Exception exception)
@@ -116,7 +116,7 @@ namespace PMOS.Identity.Managers
         /// <returns>Список работников.</returns>
         public async Task<IEnumerable<WorkerDTO>> GetWorkers()
         {
-            List<Worker> workers = await _pmosContext.Workers.ToListAsync();
+            List<Worker> workers = await pmosContext.Workers.ToListAsync();
 
             return workers.Select(workersDTO => new WorkerDTO
             {
@@ -136,12 +136,12 @@ namespace PMOS.Identity.Managers
         /// <returns>Информация о работнике.</returns>
         public async Task<WorkerDTO> GetWorkerById(int id)
         {
-            Worker worker = await _pmosContext.Workers.FirstOrDefaultAsync(item => item.Id == id);
+            Worker worker = await pmosContext.Workers.FirstOrDefaultAsync(item => item.Id == id);
 
-            var role = (from u in _pmosContext.Users
-                        join ur in _pmosContext.UserRoles on u.Id equals ur.IdUser
-                        join r in _pmosContext.Roles on ur.IdRole equals r.Id
-                        join w in _pmosContext.Workers on u.Id equals w.IdUser
+            var role = (from u in pmosContext.Users
+                        join ur in pmosContext.UserRoles on u.Id equals ur.IdUser
+                        join r in pmosContext.Roles on ur.IdRole equals r.Id
+                        join w in pmosContext.Workers on u.Id equals w.IdUser
                         where w.Id == id
                         select r.Name).FirstOrDefault();
 
@@ -160,7 +160,6 @@ namespace PMOS.Identity.Managers
             };
         }
         #endregion
-
 
         #region Обновление информации о работнике.
         /// <summary>
@@ -182,12 +181,12 @@ namespace PMOS.Identity.Managers
                 Email = workerDTO.Email
             };
 
-            _pmosContext.Workers.Attach(worker);
-            _pmosContext.Workers.Update(worker);
+            pmosContext.Workers.Attach(worker);
+            pmosContext.Workers.Update(worker);
 
             try
             {
-                await _pmosContext.SaveChangesAsync();
+                await pmosContext.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -197,7 +196,6 @@ namespace PMOS.Identity.Managers
             return IdentityResult.Success;
         }
         #endregion
-
 
         #region Удаление работника.
         /// <summary>
@@ -209,10 +207,10 @@ namespace PMOS.Identity.Managers
             if (id == 0)
                 return IdentityResult.Failed();
 
-            Worker worker = _pmosContext.Workers.FirstOrDefault(item => item.Id == id);
-            ProjectWorker projectWorker = _pmosContext.ProjectWorkers.FirstOrDefault(item => item.IdWorker == worker.Id);
-            User user = _pmosContext.Users.FirstOrDefault(item => item.Id == worker.IdUser);
-            UserRole userRole = _pmosContext.UserRoles.FirstOrDefault(item => item.IdUser == user.Id);
+            Worker worker = pmosContext.Workers.FirstOrDefault(item => item.Id == id);
+            ProjectWorker projectWorker = pmosContext.ProjectWorkers.FirstOrDefault(item => item.IdWorker == worker.Id);
+            User user = pmosContext.Users.FirstOrDefault(item => item.Id == worker.IdUser);
+            UserRole userRole = pmosContext.UserRoles.FirstOrDefault(item => item.IdUser == user.Id);
             UserDTO userDTO = new UserDTO
             {
                 Id = user.Id,
@@ -221,37 +219,37 @@ namespace PMOS.Identity.Managers
                 SecurityStamp = user.SecurityStamp
             };
 
-            using (var transaction = _pmosContext.Database.BeginTransaction())
+            using (var transaction = pmosContext.Database.BeginTransaction())
             {
                 try
                 {
                     if (projectWorker != null)
                     {
-                        _pmosContext.ProjectWorkers.Remove(projectWorker);
-                        await _pmosContext.SaveChangesAsync();
+                        pmosContext.ProjectWorkers.Remove(projectWorker);
+                        await pmosContext.SaveChangesAsync();
                     } 
 
                     if (worker != null)
                     {
-                        _pmosContext.Workers.Remove(worker);
-                        await _pmosContext.SaveChangesAsync();
+                        pmosContext.Workers.Remove(worker);
+                        await pmosContext.SaveChangesAsync();
                     }
                         
                     if (userRole != null)
                     {
-                        _pmosContext.UserRoles.Remove(userRole);
-                        await _pmosContext.SaveChangesAsync();
+                        pmosContext.UserRoles.Remove(userRole);
+                        await pmosContext.SaveChangesAsync();
                     }
 
                     if (user != null)
                     {
-                        _pmosContext.Users.Remove(user);
-                        await _pmosContext.SaveChangesAsync();
+                        pmosContext.Users.Remove(user);
+                        await pmosContext.SaveChangesAsync();
                     }
 
                     transaction.Commit();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     transaction.Rollback();
                     return IdentityResult.Failed();

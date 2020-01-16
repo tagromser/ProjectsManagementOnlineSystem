@@ -1,39 +1,29 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using PMOS.DataAccess.Model.PMOS.Tables;
-using PMOS.DataAccess.Context;
 using PMOS.DTO;
 using PMOS.Logic.Interfaces;
 using System;
 using System.Linq;
-using PMOS.Logic.Common;
+using CCFI.Logic.Logics;
+using PMOS.DataAccess.Interfaces;
+using AutoMapper;
+using PMOS.DataAccess.Model.PMOS.Physical;
 
 namespace PMOS.Logic.Logic
 {
     /// <summary>
     /// Реализация интерфейса логики управления проектов.
     /// </summary>
-    public class ProjectManagementLogic : IProjectManagementLogic
+    public class ProjectManagementLogic : ManagementLogic, IProjectManagementLogic
     {
         #region Конструктор
         /// <summary>
         /// Конструктор
         /// </summary>
         /// <param name="pmosContext">Контекст для работы с базой данных PMOS</param>
-        public ProjectManagementLogic(PMOSContext pmosContext)
+        public ProjectManagementLogic(IStorage storage, IMapper mapper) : base(storage, mapper)
         {
-            _pmosContext = pmosContext;
         }
-        #endregion
-
-        #region Локальные переменные
-        #region Контекст базы данных.
-        /// <summary>
-        /// Контекст базы данных.
-        /// </summary>
-        private PMOSContext _pmosContext;
-        #endregion
         #endregion
 
         #region Получает список проектов.
@@ -43,18 +33,10 @@ namespace PMOS.Logic.Logic
         /// <returns>Список проектов.</returns>
         public async Task<IEnumerable<ProjectDTO>> GetProjects()
         {
-            List<Project> projects = await _pmosContext.Projects.ToListAsync();
+            IEnumerable<Project> projects = await storage.GetRepository<Project>().GetAll();
 
-            return projects.Select(projectsDTO => new ProjectDTO
-            {
-                Id = projectsDTO.Id,
-                Name = projectsDTO.Name,
-                CustomerCompanyName = projectsDTO.CustomerCompanyName,
-                PerformerCompanyName = projectsDTO.PerformerCompanyName,
-                StartDate = projectsDTO.StartDate,
-                EndDate = projectsDTO.EndDate,
-                Priority = projectsDTO.Priority
-            });
+            return projects.Select(project => mapper.Map<Project, ProjectDTO>(project, options => options.ConfigureMap()
+                .ForMember(destinationMember => destinationMember.IdWorkerProject, opt => opt.Ignore()))).ToList();
         }
         #endregion
 
@@ -65,17 +47,10 @@ namespace PMOS.Logic.Logic
         /// <returns>Информация о проекте.</returns>
         public async Task<ProjectDTO> GetProjectById(int id)
         {
-            Project project = await _pmosContext.Projects.FirstOrDefaultAsync(item => item.Id == id);
+            Project project = await storage.GetRepository<Project>().FindById(id);
 
             if (project == null)
                 throw new ArgumentNullException(nameof(project));
-
-            var query = from w in _pmosContext.Workers
-                              join pw in _pmosContext.ProjectWorkers on w.Id equals pw.IdWorker
-                              join u in _pmosContext.Users on w.IdUser equals u.Id
-                              join ur in _pmosContext.UserRoles on u.Id equals ur.IdUser
-                                where ur.IdRole == 1 && pw.IdProject.Equals(id)
-                              select w.Id;
 
             return new ProjectDTO
             {
@@ -86,7 +61,7 @@ namespace PMOS.Logic.Logic
                 StartDate = project.StartDate,
                 EndDate = project.EndDate,
                 Priority = project.Priority,
-                IdWorkerProject = query.First()
+                IdWorkerProject = await storage.VirtualRepository.GetWorkerIdByProjectId(project.Id)
             };
         }
         #endregion
@@ -96,48 +71,35 @@ namespace PMOS.Logic.Logic
         /// Создание проекте.
         /// </summary>
         /// <returns>Результат</returns>
-        public async Task<OperationResult> CreateProject(ProjectDTO projectDTO)
+        public async Task<bool> CreateProject(ProjectDTO projectDTO)
         {
             if (projectDTO == null)
                 throw new ArgumentNullException(nameof(projectDTO));
 
-            using (var transaction = _pmosContext.Database.BeginTransaction())
+            using (var transaction = storage.BeginTransaction())
             {
                 try
                 {
-                    Project project = new Project
-                    {
-                        Id = projectDTO.Id,
-                        Name = projectDTO.Name,
-                        CustomerCompanyName = projectDTO.CustomerCompanyName,
-                        PerformerCompanyName = projectDTO.PerformerCompanyName,
-                        StartDate = projectDTO.StartDate,
-                        EndDate = projectDTO.EndDate,
-                        Priority = projectDTO.Priority
-                    };
-
-                    _pmosContext.Projects.Add(project);
-                    await _pmosContext.SaveChangesAsync();
+                    Project project = mapper.Map<Project>(projectDTO);
+                    await storage.GetRepository<Project>().Create(project);
 
                     ProjectWorker projectWorker = new ProjectWorker
                     {
                         IdProject = project.Id,
                         IdWorker = projectDTO.IdWorkerProject
                     };
-
-                    _pmosContext.ProjectWorkers.Add(projectWorker);
-                    await _pmosContext.SaveChangesAsync();
+                    await storage.GetRepository<ProjectWorker>().Create(projectWorker);
 
                     transaction.Commit();
                 }
                 catch (Exception ex)
                 {
                     transaction.Rollback();
-                    return OperationResult.Failed;
+                    throw new Exception(ex.Message);
                 }
             }
 
-            return OperationResult.Success;
+            return true;
         }
         #endregion
 
@@ -146,39 +108,28 @@ namespace PMOS.Logic.Logic
         /// Обновление информации о работнике.
         /// </summary>
         /// <returns>Результат</returns>
-        public async Task<OperationResult> UpdateProject(ProjectDTO projectDTO)
+        public async Task<bool> UpdateProject(ProjectDTO projectDTO)
         {
             if (projectDTO == null)
                 throw new ArgumentNullException(nameof(projectDTO));
 
-            using (var transaction = _pmosContext.Database.BeginTransaction())
+            using (var transaction = storage.BeginTransaction())
             {
                 try
                 {
-                    Project project = new Project
-                    {
-                        Id = projectDTO.Id,
-                        Name = projectDTO.Name,
-                        CustomerCompanyName = projectDTO.CustomerCompanyName,
-                        PerformerCompanyName = projectDTO.PerformerCompanyName,
-                        StartDate = projectDTO.StartDate,
-                        EndDate = projectDTO.EndDate,
-                        Priority = projectDTO.Priority
-                    };
-
-                    _pmosContext.Projects.Update(project);
-                    await _pmosContext.SaveChangesAsync();
+                    Project project = mapper.Map<Project>(projectDTO);
+                    await storage.GetRepository<Project>().Update(project);
 
                     transaction.Commit();
                 }
                 catch (Exception ex)
                 {
                     transaction.Rollback();
-                    return OperationResult.Failed;
+                    throw new Exception(ex.Message);
                 }
             }
 
-            return OperationResult.Success;
+            return true;
         }
         #endregion
 
@@ -187,40 +138,34 @@ namespace PMOS.Logic.Logic
         /// Удаление проекта.
         /// </summary>
         /// <returns>Результат</returns>
-        public async Task<OperationResult> DeleteProject(int id)
+        public async Task<bool> DeleteProject(int id)
         {
             if (id == 0)
-                return OperationResult.Failed;
+                throw new ArgumentNullException(nameof(id));
 
-            Project project = _pmosContext.Projects.FirstOrDefault(item => item.Id == id);
-            var projectWorker = _pmosContext.ProjectWorkers.Where(item => item.IdProject == project.Id);
+            Project project = await storage.GetRepository<Project>().FindById(id);
+            IEnumerable<ProjectWorker> projectWorker = storage.GetRepository<ProjectWorker>().Get(item => item.IdProject == project.Id);
 
-            using (var transaction = _pmosContext.Database.BeginTransaction())
+            using (var transaction = storage.BeginTransaction())
             {
                 try
                 {
                     if (projectWorker != null)
-                    {
-                        _pmosContext.ProjectWorkers.RemoveRange(projectWorker);
-                        await _pmosContext.SaveChangesAsync();
-                    }
+                        await storage.GetRepository<ProjectWorker>().DeleteRange(projectWorker);
 
                     if (project != null)
-                    {
-                        _pmosContext.Projects.Remove(project);
-                        await _pmosContext.SaveChangesAsync();
-                    }
+                        await storage.GetRepository<Project>().Delete(project); 
 
                     transaction.Commit();
                 }
                 catch (Exception ex)
                 {
                     transaction.Rollback();
-                    return OperationResult.Failed;
+                    throw new Exception(ex.Message);
                 }
             }
 
-            return OperationResult.Success;
+            return true;
         }
         #endregion
 
@@ -229,22 +174,16 @@ namespace PMOS.Logic.Logic
         /// Получение рабочего по id пользователя.
         /// </summary>
         /// <returns>Рабочего</returns>
-        public async Task<WorkerDTO> GetWorkerProjectByIdUser(int id)
+        public WorkerDTO GetWorkerProjectByIdUser(int id)
         {
             if (id == 0)
                 throw new ArgumentNullException(nameof(id));
 
-            Worker worker = await _pmosContext.Workers.FirstOrDefaultAsync(item => item.IdUser == id);
+            IEnumerable<Worker> worker = storage.GetRepository<Worker>().Get(item => item.IdUser == id);
 
-            return new WorkerDTO
-            {
-                Id = worker.Id,
-                IdUser = worker.IdUser,
-                Name = worker.Name,
-                Surname = worker.Surname,
-                Patronymic = worker.Patronymic,
-                Email = worker.Email
-            };
+            return mapper.Map<Worker, WorkerDTO>(worker.FirstOrDefault(), options => options.ConfigureMap()
+                .ForMember(destinationMember => destinationMember.RoleName, opt => opt.Ignore())
+                .ForMember(destinationMember => destinationMember.IdProjectWorker, opt => opt.Ignore()));
         }
         #endregion
 
@@ -253,28 +192,14 @@ namespace PMOS.Logic.Logic
         /// Получение рабочих по id проекта.
         /// </summary>
         /// <returns>Список рабочих</returns>
-        public async Task<List<WorkerDTO>> GetWorkersByIdProject(int id)
+        public async Task<List<WorkerDTO>> GetWorkersByIdProject(int idProject)
         {
-            if (id == 0)
-                throw new ArgumentNullException(nameof(id));
+            if (idProject == 0)
+                throw new ArgumentNullException(nameof(idProject));
 
-            var query = await (from w in _pmosContext.Workers
-                        join pw in _pmosContext.ProjectWorkers on w.Id equals pw.IdWorker
-                        join u in _pmosContext.Users on w.IdUser equals u.Id
-                        join ur in _pmosContext.UserRoles on u.Id equals ur.IdUser
-                        where pw.IdProject == id && ur.IdRole != 1
-                        select new WorkerDTO
-                        {
-                            Id = w.Id,
-                            IdUser = w.IdUser,
-                            Name = w.Name,
-                            Surname = w.Surname,
-                            Patronymic = w.Patronymic,
-                            Email = w.Email,
-                            IdProjectWorker = pw.Id
-                        }).ToListAsync();
+            var workers = await storage.VirtualRepository.GetWorkersByProjectId(idProject);
 
-            return query;
+            return mapper.Map<List<WorkerDTO>>(workers);
         }
         #endregion
 
@@ -283,33 +208,32 @@ namespace PMOS.Logic.Logic
         /// Удаление рабочего с проекта.
         /// </summary>
         /// <returns>Результат</returns>
-        public async Task<OperationResult> DeleteProjectWorker(int idProjectWorker)
+        public async Task<bool> DeleteProjectWorker(int idProjectWorker)
         {
             if (idProjectWorker == 0)
-                return OperationResult.Failed;
+                throw new ArgumentNullException(nameof(idProjectWorker));
 
-            ProjectWorker projectWorker = _pmosContext.ProjectWorkers.FirstOrDefault(item => item.Id == idProjectWorker);
+            ProjectWorker projectWorker = await storage.GetRepository<ProjectWorker>().FindById(idProjectWorker);
 
-            using (var transaction = _pmosContext.Database.BeginTransaction())
+            if (projectWorker != null)
+                throw new ArgumentNullException(nameof(projectWorker));
+
+            using (var transaction = storage.BeginTransaction())
             {
                 try
                 {
-                    if (projectWorker != null)
-                    {
-                        _pmosContext.ProjectWorkers.Remove(projectWorker);
-                        await _pmosContext.SaveChangesAsync();
-                    }
-
+                    await storage.GetRepository<ProjectWorker>().Delete(projectWorker);
+ 
                     transaction.Commit();
                 }
                 catch (Exception ex)
                 {
                     transaction.Rollback();
-                    return OperationResult.Failed;
+                    throw new Exception(ex.Message);
                 }
             }
 
-            return OperationResult.Success;
+            return true;
         }
         #endregion
 
@@ -318,23 +242,11 @@ namespace PMOS.Logic.Logic
         /// Получает список работников для добавления к проекту.
         /// </summary>
         /// <returns>Список работников.</returns>
-        public async Task<IEnumerable<WorkerDTO>> GetWorkersForAdding(int idProject)
+        public async Task<IEnumerable<WorkerDTO>> GetWorkersForAdding()
         {
-            var query = await (from w in _pmosContext.Workers
-                        join u in _pmosContext.Users on w.IdUser equals u.Id
-                        join ur in _pmosContext.UserRoles on u.Id equals ur.IdUser
-                        where ur.IdRole != 1
-                        select new WorkerDTO
-                        {
-                            Id = w.Id,
-                            IdUser = w.IdUser,
-                            Name = w.Name,
-                            Surname = w.Surname,
-                            Patronymic = w.Patronymic,
-                            Email = w.Email
-                        }).ToListAsync();
+            var workers = await storage.VirtualRepository.GetWorkersForAdding();
 
-            return query;
+            return mapper.Map<List<WorkerDTO>>(workers);
         }
         #endregion
 
@@ -348,12 +260,13 @@ namespace PMOS.Logic.Logic
             if (idWorker == 0 || idProject == 0)
                 return false;
 
-            ProjectWorker workerProject = await _pmosContext.ProjectWorkers.FirstOrDefaultAsync(item => item.IdWorker == idWorker && item.IdProject == idProject);
+            ProjectWorker workerProject =
+                storage.GetRepository<ProjectWorker>().Get(item => item.IdWorker == idWorker && item.IdProject == idProject).FirstOrDefault();
 
-            if(workerProject != null)
+            if (workerProject != null)
                 return false;
 
-            using (var transaction = _pmosContext.Database.BeginTransaction())
+            using (var transaction = storage.BeginTransaction())
             {
                 try
                 {
@@ -363,15 +276,14 @@ namespace PMOS.Logic.Logic
                         IdWorker = idWorker
                     };
 
-                    _pmosContext.ProjectWorkers.Add(projectWorker);
-                    await _pmosContext.SaveChangesAsync();
+                    await storage.GetRepository<ProjectWorker>().Create(projectWorker);
 
                     transaction.Commit();
                 }
                 catch (Exception ex)
                 {
                     transaction.Rollback();
-                    return false;
+                    throw new Exception(ex.Message);
                 }
             }
 

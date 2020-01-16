@@ -4,6 +4,9 @@ using Microsoft.Extensions.DependencyInjection;
 using PMOS.DataAccess.Context;
 using PMOS.Logic.Logic;
 using PMOS.Logic.Interfaces;
+using PMOS.DataAccess.Interfaces;
+using PMOS.DataAccess;
+using AutoMapper;
 
 namespace PMOS.Logic.Infrastructure
 {
@@ -21,11 +24,13 @@ namespace PMOS.Logic.Infrastructure
         /// <param name="connectionStringName">Имя строки соединения.</param>
         public static void ConfigureDbContext(this IServiceCollection services, IConfiguration configuration, string connectionStringName)
         {
-            //Получаем строку подключения из файла конфигурации
+            // Получаем строку подключения из файла конфигурации
             string connectionString = configuration.GetConnectionString(connectionStringName);
 
-            //Добавляем контекст PMOSContext в качестве сервиса в приложение
+            // Добавляем контекст PMOSContext в качестве сервиса в приложение
             services.AddDbContext<PMOSContext>(options => options.UseSqlServer(connectionString));
+            // Добавляем временный тип сервиса
+            services.AddTransient<IStorage, Storage>();
         }
         #endregion
 

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
 
-namespace PMOS.DataAccess.Model.PMOS.Tables
+namespace PMOS.DataAccess.Model.PMOS.Physical
 {
     /// <summary>
     /// Пользователь.

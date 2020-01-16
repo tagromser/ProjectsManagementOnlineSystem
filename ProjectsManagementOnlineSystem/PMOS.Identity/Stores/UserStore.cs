@@ -1,6 +1,6 @@
 ﻿using System;
 using PMOS.DataAccess.Context;
-using PMOS.DataAccess.Model.PMOS.Tables;
+using PMOS.DataAccess.Model.PMOS.Physical;
 using PMOS.DTO.Account;
 
 namespace PMOS.Identity.Stores
@@ -27,7 +27,7 @@ namespace PMOS.Identity.Stores
         /// <summary>
         /// Контекст базы данных.
         /// </summary>
-        private PMOSContext _pmosContext;
+        private readonly PMOSContext _pmosContext;
         #endregion
 
         #region Если true будет вызван dispose над репозиторием данных во время dispose.

@@ -22,8 +22,8 @@ namespace PMOS.UI.Web.Controllers
         /// <param name="signInManager">Предоставляет API для входа пользователя.</param>
         public AccountController(UserManager userManager, SignInManager<UserDTO> signInManager)
         {
-            _userManager = userManager;
-            _signInManager = signInManager;
+            this.userManager = userManager;
+            this.signInManager = signInManager;
         }
         #endregion
 
@@ -31,12 +31,12 @@ namespace PMOS.UI.Web.Controllers
         /// <summary>
         /// Предоставляет API для управления пользователями в хранилище.
         /// </summary>
-        private readonly UserManager _userManager;
+        private readonly UserManager userManager;
 
         /// <summary>
         /// Предоставляет API для входа пользователя.
         /// </summary>
-        private readonly SignInManager<UserDTO> _signInManager;
+        private readonly SignInManager<UserDTO> signInManager;
         #endregion
 
         #region public методы.
@@ -75,7 +75,7 @@ namespace PMOS.UI.Web.Controllers
             if (!ModelState.IsValid)
                 return View(model);
 
-            var result = await _signInManager.PasswordSignInAsync(model.Name, model.Password, false, lockoutOnFailure: false);
+            var result = await signInManager.PasswordSignInAsync(model.Name, model.Password, false, lockoutOnFailure: false);
 
             if (result.Succeeded)
                 return RedirectToLocal(returnUrl);
@@ -146,12 +146,12 @@ namespace PMOS.UI.Web.Controllers
                 Email = model.Email
             };
 
-            var result = await _userManager.CreateAsync(user, model.Password, workerDTO, model.IdRole);
+            var result = await userManager.CreateAsync(user, model.Password, workerDTO, model.IdRole);
 
             if (result.Succeeded)
             {
                 if(model.IdRole == 1)
-                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    await signInManager.SignInAsync(user, isPersistent: false);
 
                 return RedirectToLocal(returnUrl);
             }
@@ -170,7 +170,7 @@ namespace PMOS.UI.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
-            await _signInManager.SignOutAsync();
+            await signInManager.SignOutAsync();
             return RedirectToAction(nameof(HomeController.Index), "Home");
         }
         #endregion

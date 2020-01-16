@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using PMOS.DataAccess.Model.PMOS.Tables;
+using PMOS.DataAccess.Model.PMOS.Physical;
 using Task = System.Threading.Tasks.Task;
 
 namespace PMOS.Identity.Stores

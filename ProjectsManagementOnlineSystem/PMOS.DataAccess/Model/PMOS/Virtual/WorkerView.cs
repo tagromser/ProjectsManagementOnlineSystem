@@ -1,20 +1,17 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿
 
-namespace PMOS.DataAccess.Model.PMOS.Tables
+namespace PMOS.DataAccess.Model.PMOS.Virtual
 {
     /// <summary>
-    /// Работник.
+    /// Представление работника.
     /// </summary>
-    [Table("Worker", Schema = "PMOS")]
-    public class Worker
+    public class WorkerView
     {
         #region Свойства
         #region Идентификатор работника.
         /// <summary>
         /// Идентификатор работника.
         /// </summary>
-        [Key, Column("ID"), Required, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         #endregion
 
@@ -22,7 +19,6 @@ namespace PMOS.DataAccess.Model.PMOS.Tables
         /// <summary>
         /// ID пользователя.
         /// </summary>
-        [Column("ID_User"), Required, ForeignKey(nameof(User))]
         public int IdUser { get; set; }
         #endregion
 
@@ -30,7 +26,6 @@ namespace PMOS.DataAccess.Model.PMOS.Tables
         /// <summary>
         /// Имя работника.
         /// </summary>
-        [Column("Name")]
         public string Name { get; set; }
         #endregion
 
@@ -38,7 +33,6 @@ namespace PMOS.DataAccess.Model.PMOS.Tables
         /// <summary>
         /// Фамилия работника.
         /// </summary>
-        [Column("Surname"), Required]
         public string Surname { get; set; }
         #endregion
 
@@ -46,7 +40,6 @@ namespace PMOS.DataAccess.Model.PMOS.Tables
         /// <summary>
         /// Отчество работника.
         /// </summary>
-        [Column("Patronymic"), Required]
         public string Patronymic { get; set; }
         #endregion
 
@@ -54,8 +47,21 @@ namespace PMOS.DataAccess.Model.PMOS.Tables
         /// <summary>
         /// Email работника.
         /// </summary>
-        [Column("Email")]
         public string Email { get; set; }
+        #endregion
+
+        #region Название роли работника.
+        /// <summary>
+        /// Название роли работника.
+        /// </summary>
+        public string RoleName { get; set; }
+        #endregion
+
+        #region id связки работника и проекта.
+        /// <summary>
+        /// id связки работника и проекта.
+        /// </summary>
+        public int IdProjectWorker { get; set; }
         #endregion
         #endregion
     }

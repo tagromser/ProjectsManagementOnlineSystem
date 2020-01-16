@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -40,21 +41,14 @@ namespace PMOS.UI.Web.Controllers
         {
             IEnumerable<WorkerDTO> workers = await _userManager.GetWorkers();
 
-            List<WorkerViewModel> view = new List<WorkerViewModel>();
-
-            foreach(var worker in workers)
+            List<WorkerViewModel> view = workers.Select(worker => new WorkerViewModel
             {
-                WorkerViewModel workerViewModel = new WorkerViewModel
-                {
-                    Id = worker.Id,
-                    Name = worker.Name,
-                    Surname = worker.Surname,
-                    Patronymic = worker.Patronymic,
-                    Email = worker.Email
-                };
-
-                view.Add(workerViewModel);
-            }
+                Id = worker.Id,
+                Name = worker.Name,
+                Surname = worker.Surname,
+                Patronymic = worker.Patronymic,
+                Email = worker.Email
+            }).ToList();
 
             return View(view);
         }

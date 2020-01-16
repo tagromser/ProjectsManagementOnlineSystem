@@ -5,9 +5,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PMOS.DTO;
 using PMOS.Logic.Interfaces;
-using PMOS.Logic.Common;
 using PMOS.UI.Web.Models.Project;
 using PMOS.Identity.Managers;
+using System.Linq;
 
 namespace PMOS.UI.Web.Controllers
 {
@@ -22,8 +22,8 @@ namespace PMOS.UI.Web.Controllers
         /// <param name="userManager">Предоставляет API для управления пользователями в хранилище.</param>
         public ProjectController(IProjectManagementLogic projectManagementLogic, UserManager userManager)
         {
-            _projectManagementLogic = projectManagementLogic;
-            _userManager = userManager;
+            this.projectManagementLogic = projectManagementLogic;
+            this.userManager = userManager;
         }
         #endregion
 
@@ -31,12 +31,12 @@ namespace PMOS.UI.Web.Controllers
         /// <summary>
         /// Предоставляет API для управления проектами.
         /// </summary>
-        private readonly IProjectManagementLogic _projectManagementLogic;
+        private readonly IProjectManagementLogic projectManagementLogic;
 
         /// <summary>
         /// Предоставляет API для управления пользователями в хранилище.
         /// </summary>
-        private readonly UserManager _userManager;
+        private readonly UserManager userManager;
         #endregion
 
         #region Отображает страницу с проектами. Метод: "GET". Адрес: "/Project/Index".
@@ -47,25 +47,18 @@ namespace PMOS.UI.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            IEnumerable<ProjectDTO> projects = await _projectManagementLogic.GetProjects();
+            IEnumerable<ProjectDTO> projects = await projectManagementLogic.GetProjects();
 
-            List<ProjectViewModel> view = new List<ProjectViewModel>();
-
-            foreach (var project in projects)
+            List<ProjectViewModel> view = projects.Select(project => new ProjectViewModel()
             {
-                ProjectViewModel projectViewModel = new ProjectViewModel
-                {
-                    Id = project.Id,
-                    Name = project.Name,
-                    CustomerCompanyName = project.CustomerCompanyName,
-                    PerformerCompanyName = project.PerformerCompanyName,
-                    StartDate = project.StartDate,
-                    EndDate = project.EndDate,
-                    Priority = project.Priority
-                };
-
-                view.Add(projectViewModel);
-            }
+                Id = project.Id,
+                Name = project.Name,
+                CustomerCompanyName = project.CustomerCompanyName,
+                PerformerCompanyName = project.PerformerCompanyName,
+                StartDate = project.StartDate,
+                EndDate = project.EndDate,
+                Priority = project.Priority
+            }).ToList();
 
             return View(view);
         }
@@ -95,9 +88,9 @@ namespace PMOS.UI.Web.Controllers
             if (projectCreateModel == null)
                 throw new ArgumentNullException(nameof(projectCreateModel));
 
-            int idUser = Convert.ToInt32(_userManager.GetUserId(User));
+            int idUser = Convert.ToInt32(userManager.GetUserId(User));
 
-            WorkerDTO workerDTO = await _projectManagementLogic.GetWorkerProjectByIdUser(idUser);
+            WorkerDTO workerDTO = projectManagementLogic.GetWorkerProjectByIdUser(idUser);
 
             ProjectDTO projectDTO = new ProjectDTO
             {
@@ -111,9 +104,9 @@ namespace PMOS.UI.Web.Controllers
                 IdWorkerProject = workerDTO.Id
             };
 
-            var result = await _projectManagementLogic.CreateProject(projectDTO);
+            var result = await projectManagementLogic.CreateProject(projectDTO);
 
-            if (result == OperationResult.Success)
+            if (result)
             {
                 return RedirectToAction(nameof(ProjectController.Index), "Project");
             }
@@ -131,24 +124,17 @@ namespace PMOS.UI.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> ProjectWorkers(int idProject)
         {
-            List<WorkerDTO> workersProject = await _projectManagementLogic.GetWorkersByIdProject(idProject);
+            List<WorkerDTO> workers = await projectManagementLogic.GetWorkersByIdProject(idProject);
 
-            List<ProjectWorkerModel> view = new List<ProjectWorkerModel>();
-
-            foreach (var worker in workersProject)
+            List<ProjectWorkerModel> view = workers.Select(worker => new ProjectWorkerModel
             {
-                ProjectWorkerModel projectWorkerModel = new ProjectWorkerModel
-                {
-                    Id = worker.Id,
-                    Name = worker.Name,
-                    Surname = worker.Surname,
-                    Patronymic = worker.Patronymic,
-                    Email = worker.Email,
-                    IdProjectWorker = worker.IdProjectWorker
-                };
-
-                view.Add(projectWorkerModel);
-            }
+                Id = worker.Id,
+                Name = worker.Name,
+                Surname = worker.Surname,
+                Patronymic = worker.Patronymic,
+                Email = worker.Email,
+                IdProjectWorker = worker.IdProjectWorker
+            }).ToList();
 
             ViewBag.IdProject = idProject;
 
@@ -165,23 +151,16 @@ namespace PMOS.UI.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> AddProjectWorker(int idProject)
         {
-            IEnumerable<WorkerDTO> workersProject = await _projectManagementLogic.GetWorkersForAdding(idProject);
+            IEnumerable<WorkerDTO> workers = await projectManagementLogic.GetWorkersForAdding();
 
-            List<ProjectWorkerModel> view = new List<ProjectWorkerModel>();
-
-            foreach (var worker in workersProject)
+            List<ProjectWorkerModel> view = workers.Select(worker => new ProjectWorkerModel
             {
-                ProjectWorkerModel projectWorkerModel = new ProjectWorkerModel
-                {
-                    Id = worker.Id,
-                    Name = worker.Name,
-                    Surname = worker.Surname,
-                    Patronymic = worker.Patronymic,
-                    Email = worker.Email
-                };
-
-                view.Add(projectWorkerModel);
-            }
+                Id = worker.Id,
+                Name = worker.Name,
+                Surname = worker.Surname,
+                Patronymic = worker.Patronymic,
+                Email = worker.Email
+            }).ToList();
 
             ViewBag.IdProject = idProject;
 
@@ -199,7 +178,7 @@ namespace PMOS.UI.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> AddProjectWorkerAction(int idWorker, int idProject)
         {
-            var result = await _projectManagementLogic.AddProjectWorker(idWorker, idProject);
+            var result = await projectManagementLogic.AddProjectWorker(idWorker, idProject);
 
             if (result == true)
             {
@@ -220,9 +199,9 @@ namespace PMOS.UI.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> DeleteProjectWorker(int idProjectWorker, int idProject)
         {
-            var result = await _projectManagementLogic.DeleteProjectWorker(idProjectWorker);
+            var result = await projectManagementLogic.DeleteProjectWorker(idProjectWorker);
 
-            if (result == OperationResult.Success)
+            if (result)
             {
                 return RedirectToAction(nameof(ProjectController.ProjectWorkers), "Project", new { idProject });
             }
@@ -239,9 +218,9 @@ namespace PMOS.UI.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
-            ProjectDTO project = await _projectManagementLogic.GetProjectById(id);
+            ProjectDTO project = await projectManagementLogic.GetProjectById(id);
 
-            WorkerDTO worker = await _userManager.GetWorkerById(project.IdWorkerProject);
+            WorkerDTO worker = await userManager.GetWorkerById(project.IdWorkerProject);
 
             ProjectDetailsModel projectDetailsModel = new ProjectDetailsModel
             {
@@ -267,7 +246,7 @@ namespace PMOS.UI.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            ProjectDTO project = await _projectManagementLogic.GetProjectById(id);
+            ProjectDTO project = await projectManagementLogic.GetProjectById(id);
 
             ProjectEditModel projectEditModel = new ProjectEditModel
             {
@@ -309,9 +288,9 @@ namespace PMOS.UI.Web.Controllers
                 Priority = projectEditModel.Priority
             };
 
-            var result = await _projectManagementLogic.UpdateProject(projectDTO);
+            var result = await projectManagementLogic.UpdateProject(projectDTO);
 
-            if (result == OperationResult.Success)
+            if (result)
             {
                 return RedirectToAction(nameof(ProjectController.Index), "Project");
             }
@@ -328,9 +307,9 @@ namespace PMOS.UI.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            var result = await _projectManagementLogic.DeleteProject(id);
+            var result = await projectManagementLogic.DeleteProject(id);
 
-            if (result == OperationResult.Success)
+            if (result)
             {
                 return RedirectToAction(nameof(ProjectController.Index), "Project");
             }
