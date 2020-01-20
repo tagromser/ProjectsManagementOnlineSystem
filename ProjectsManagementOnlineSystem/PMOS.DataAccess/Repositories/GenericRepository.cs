@@ -14,14 +14,29 @@ namespace PMOS.DataAccess.Repositories
     /// <typeparam name="TEntity">Сущность базы.</typeparam>
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
-        private readonly PMOSContext pmosContext;
-        private readonly DbSet<TEntity> dbSet;
-
+        #region Конструктор.
+        /// <summary>
+        /// Конструктор.
+        /// </summary>
+        /// <param name="pmosContext">Контекст для работы с базой данных.</param>
         public GenericRepository(PMOSContext pmosContext)
         {
             this.pmosContext = pmosContext;
             dbSet = pmosContext.Set<TEntity>();
         }
+        #endregion
+
+        #region Локальные переменные
+        /// <summary>
+        /// Контекст для работы с базой данных.
+        /// </summary>
+        private readonly PMOSContext pmosContext;
+
+        /// <summary>
+        /// Используется для запроса и сохранения экземпляров сущности.
+        /// </summary>
+        private readonly DbSet<TEntity> dbSet;
+        #endregion
 
         public async Task<IEnumerable<TEntity>> GetAll()
         {

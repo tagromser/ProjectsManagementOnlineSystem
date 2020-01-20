@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace PMOS.UI.Web.Models.Worker
+﻿namespace PMOS.UI.Web.Models.Worker
 {
     /// <summary>
     /// Модель представляющая работника для отображения деталей.

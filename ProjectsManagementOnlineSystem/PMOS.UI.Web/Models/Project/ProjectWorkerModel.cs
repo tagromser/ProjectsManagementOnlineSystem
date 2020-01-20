@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace PMOS.UI.Web.Models.Project
+﻿namespace PMOS.UI.Web.Models.Project
 {
     /// <summary>
     /// Модель представляющая рабочих проекта.

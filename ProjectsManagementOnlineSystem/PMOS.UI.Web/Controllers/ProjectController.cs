@@ -7,12 +7,13 @@ using PMOS.DTO;
 using PMOS.Logic.Interfaces;
 using PMOS.UI.Web.Models.Project;
 using PMOS.Identity.Managers;
-using System.Linq;
+using CCFI.UI.Web.Controllers.Shared;
+using AutoMapper;
 
 namespace PMOS.UI.Web.Controllers
 {
     [Authorize]
-    public class ProjectController : Controller
+    public class ProjectController : GenericController
     {
         #region Конструктор.
         /// <summary>
@@ -20,7 +21,8 @@ namespace PMOS.UI.Web.Controllers
         /// </summary>
         /// <param name="projectManagementLogic">Предоставляет API для управления проектами.</param>
         /// <param name="userManager">Предоставляет API для управления пользователями в хранилище.</param>
-        public ProjectController(IProjectManagementLogic projectManagementLogic, UserManager userManager)
+        /// <param name="mapper">Маппер для маппинга объектов.</param>
+        public ProjectController(IProjectManagementLogic projectManagementLogic, UserManager userManager, IMapper mapper) : base(mapper)
         {
             this.projectManagementLogic = projectManagementLogic;
             this.userManager = userManager;
@@ -49,16 +51,7 @@ namespace PMOS.UI.Web.Controllers
         {
             IEnumerable<ProjectDTO> projects = await projectManagementLogic.GetProjects();
 
-            List<ProjectViewModel> view = projects.Select(project => new ProjectViewModel()
-            {
-                Id = project.Id,
-                Name = project.Name,
-                CustomerCompanyName = project.CustomerCompanyName,
-                PerformerCompanyName = project.PerformerCompanyName,
-                StartDate = project.StartDate,
-                EndDate = project.EndDate,
-                Priority = project.Priority
-            }).ToList();
+            List<ProjectViewModel> view = mapper.Map<List<ProjectViewModel>>(projects);
 
             return View(view);
         }
@@ -92,17 +85,8 @@ namespace PMOS.UI.Web.Controllers
 
             WorkerDTO workerDTO = projectManagementLogic.GetWorkerProjectByIdUser(idUser);
 
-            ProjectDTO projectDTO = new ProjectDTO
-            {
-                Id = projectCreateModel.Id,
-                Name = projectCreateModel.Name,
-                CustomerCompanyName = projectCreateModel.CustomerCompanyName,
-                PerformerCompanyName = projectCreateModel.PerformerCompanyName,
-                StartDate = projectCreateModel.StartDate,
-                EndDate = projectCreateModel.EndDate,
-                Priority = projectCreateModel.Priority,
-                IdWorkerProject = workerDTO.Id
-            };
+            ProjectDTO projectDTO = mapper.Map<ProjectCreateModel, ProjectDTO>(projectCreateModel, options => options.ConfigureMap()
+                .ForMember(destinationMember => destinationMember.IdWorkerProject, opt => opt.MapFrom(src => workerDTO.Id)));
 
             var result = await projectManagementLogic.CreateProject(projectDTO);
 
@@ -126,15 +110,7 @@ namespace PMOS.UI.Web.Controllers
         {
             List<WorkerDTO> workers = await projectManagementLogic.GetWorkersByIdProject(idProject);
 
-            List<ProjectWorkerModel> view = workers.Select(worker => new ProjectWorkerModel
-            {
-                Id = worker.Id,
-                Name = worker.Name,
-                Surname = worker.Surname,
-                Patronymic = worker.Patronymic,
-                Email = worker.Email,
-                IdProjectWorker = worker.IdProjectWorker
-            }).ToList();
+            List<ProjectWorkerModel> view = mapper.Map<List<ProjectWorkerModel>>(workers);
 
             ViewBag.IdProject = idProject;
 
@@ -153,14 +129,7 @@ namespace PMOS.UI.Web.Controllers
         {
             IEnumerable<WorkerDTO> workers = await projectManagementLogic.GetWorkersForAdding();
 
-            List<ProjectWorkerModel> view = workers.Select(worker => new ProjectWorkerModel
-            {
-                Id = worker.Id,
-                Name = worker.Name,
-                Surname = worker.Surname,
-                Patronymic = worker.Patronymic,
-                Email = worker.Email
-            }).ToList();
+            List<ProjectWorkerModel> view = mapper.Map<List<ProjectWorkerModel>>(workers);
 
             ViewBag.IdProject = idProject;
 
@@ -222,17 +191,9 @@ namespace PMOS.UI.Web.Controllers
 
             WorkerDTO worker = await userManager.GetWorkerById(project.IdWorkerProject);
 
-            ProjectDetailsModel projectDetailsModel = new ProjectDetailsModel
-            {
-                Id = project.Id,
-                Name = project.Name,
-                CustomerCompanyName = project.CustomerCompanyName,
-                PerformerCompanyName = project.PerformerCompanyName,
-                StartDate = project.StartDate,
-                EndDate = project.EndDate,
-                Priority = project.Priority,
-                FIOWorkerProject = String.Join(" ",worker.Surname,worker.Name,worker.Patronymic)
-            };
+            ProjectDetailsModel projectDetailsModel = mapper.Map<ProjectDTO, ProjectDetailsModel>(project, options => options.ConfigureMap()
+                .ForMember(destinationMember => destinationMember.FIOWorkerProject, 
+                opt => opt.MapFrom(src => string.Join(" ", worker.Surname, worker.Name, worker.Patronymic))));
 
             return View(projectDetailsModel);
         }
@@ -248,16 +209,7 @@ namespace PMOS.UI.Web.Controllers
         {
             ProjectDTO project = await projectManagementLogic.GetProjectById(id);
 
-            ProjectEditModel projectEditModel = new ProjectEditModel
-            {
-                Id = project.Id,
-                Name = project.Name,
-                CustomerCompanyName = project.CustomerCompanyName,
-                PerformerCompanyName = project.PerformerCompanyName,
-                StartDate = project.StartDate,
-                EndDate = project.EndDate,
-                Priority = project.Priority
-            };
+            ProjectEditModel projectEditModel = mapper.Map<ProjectEditModel>(project);
 
             ViewBag.PriorityList = new List<int> { 1, 2, 3 };
 
@@ -277,16 +229,8 @@ namespace PMOS.UI.Web.Controllers
             if (projectEditModel == null)
                 throw new ArgumentNullException(nameof(projectEditModel));
 
-            ProjectDTO projectDTO = new ProjectDTO
-            {
-                Id = projectEditModel.Id,
-                Name = projectEditModel.Name,
-                CustomerCompanyName = projectEditModel.CustomerCompanyName,
-                PerformerCompanyName = projectEditModel.PerformerCompanyName,
-                StartDate = projectEditModel.StartDate,
-                EndDate = projectEditModel.EndDate,
-                Priority = projectEditModel.Priority
-            };
+            ProjectDTO projectDTO = mapper.Map<ProjectEditModel, ProjectDTO>(projectEditModel, options => options.ConfigureMap()
+                .ForMember(destinationMember => destinationMember.IdWorkerProject, opt => opt.Ignore()));
 
             var result = await projectManagementLogic.UpdateProject(projectDTO);
 

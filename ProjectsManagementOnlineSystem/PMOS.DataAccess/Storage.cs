@@ -12,14 +12,34 @@ namespace PMOS.DataAccess
     /// </summary>
     public class Storage : IStorage
     {
-        private readonly PMOSContext pmosContext;
-        private Dictionary<string, object> repositories;
-        private VirtualRepository virtualRepository;
-
+        #region Конструктор.
+        /// <summary>
+        /// Конструктор.
+        /// </summary>
+        /// <param name="pmosContext">Контекст для работы с базой данных.</param>
         public Storage(PMOSContext pmosContext)
         {
             this.pmosContext = pmosContext;
         }
+        #endregion
+
+        #region Локальные переменные
+        /// <summary>
+        /// Контекст для работы с базой данных.
+        /// </summary>
+        private readonly PMOSContext pmosContext;
+
+        /// <summary>
+        /// Словарь для хранения связки названия репозитория и его экземпляра.
+        /// </summary>
+        private Dictionary<string, object> repositories;
+
+        /// <summary>
+        /// Виртуальный репозиторий для работы с несколькими сущностями или со сложными запросами к сущностям.
+        /// </summary>
+        private VirtualRepository virtualRepository;
+        #endregion
+
 
         /// <summary>
         /// Получение неоходимого репозитория для работы с сущностями.

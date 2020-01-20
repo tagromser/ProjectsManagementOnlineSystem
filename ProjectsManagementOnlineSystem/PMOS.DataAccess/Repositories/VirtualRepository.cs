@@ -8,16 +8,27 @@ using System.Threading.Tasks;
 namespace PMOS.DataAccess.Repositories
 {
     /// <summary>
-    /// Виртуальный репозиторий для работы с несколькими сущностями.
+    /// Виртуальный репозиторий для работы с несколькими сущностями или со сложными запросами к сущностям.
     /// </summary>
     public class VirtualRepository
     {
-        private readonly PMOSContext pmosContext;
-
+        #region Конструктор.
+        /// <summary>
+        /// Конструктор.
+        /// </summary>
+        /// <param name="pmosContext">Контекст для работы с базой данных.</param>
         public VirtualRepository(PMOSContext pmosContext)
         {
             this.pmosContext = pmosContext;
         }
+        #endregion
+
+        #region Локальные переменные
+        /// <summary>
+        /// Контекст для работы с базой данных.
+        /// </summary>
+        private readonly PMOSContext pmosContext;
+        #endregion
 
         /// <summary>
         /// Получение ID руководителя проекта по ID проекта.

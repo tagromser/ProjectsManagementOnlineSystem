@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Identity;
 namespace PMOS.Identity.Stores
 {
     /// <summary>
-    /// Реализация интерфейса определяющего методы для создания, обновления, удаления и получения пользователей.
+    /// Реализация интерфейса определяющего методы для создания, обновления, удаления и получения ролей.
     /// </summary>
     public partial class RoleStore<TRole> : IRoleStore<TRole>
     {

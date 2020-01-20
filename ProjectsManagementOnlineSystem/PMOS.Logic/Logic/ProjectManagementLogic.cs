@@ -16,11 +16,12 @@ namespace PMOS.Logic.Logic
     /// </summary>
     public class ProjectManagementLogic : ManagementLogic, IProjectManagementLogic
     {
-        #region Конструктор
+        #region Конструктор.
         /// <summary>
-        /// Конструктор
+        /// Конструктор.
         /// </summary>
-        /// <param name="pmosContext">Контекст для работы с базой данных PMOS</param>
+        /// <param name="pmosContext">Контекст для работы с базой данных PMOS.</param>
+        /// <param name="mapper">Маппер для маппинга объектов.</param>
         public ProjectManagementLogic(IStorage storage, IMapper mapper) : base(storage, mapper)
         {
         }

@@ -1,4 +1,6 @@
 ﻿using System.Threading.Tasks;
+using AutoMapper;
+using CCFI.UI.Web.Controllers.Shared;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -12,7 +14,7 @@ using PMOS.UI.Web.Models.Account;
 namespace PMOS.UI.Web.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : GenericController
     {
         #region Конструктор.
         /// <summary>
@@ -20,7 +22,8 @@ namespace PMOS.UI.Web.Controllers
         /// </summary>
         /// <param name="userManager">Предоставляет API для управления пользователями в хранилище.</param>
         /// <param name="signInManager">Предоставляет API для входа пользователя.</param>
-        public AccountController(UserManager userManager, SignInManager<UserDTO> signInManager)
+        /// <param name="mapper">Маппер для маппинга объектов.</param>
+        public AccountController(UserManager userManager, SignInManager<UserDTO> signInManager, IMapper mapper) : base(mapper)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;

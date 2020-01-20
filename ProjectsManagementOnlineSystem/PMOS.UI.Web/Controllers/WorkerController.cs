@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
+using CCFI.UI.Web.Controllers.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PMOS.DTO;
@@ -11,16 +12,17 @@ using PMOS.UI.Web.Models.Worker;
 namespace PMOS.UI.Web.Controllers
 {
     [Authorize]
-    public class WorkerController : Controller
+    public class WorkerController : GenericController
     {
         #region Конструктор.
         /// <summary>
         /// Конструктор.
         /// </summary>
         /// <param name="userManager">Предоставляет API для управления пользователями в хранилище.</param>
-        public WorkerController(UserManager userManager)
+        /// <param name="mapper">Маппер для маппинга объектов.</param>
+        public WorkerController(UserManager userManager, IMapper mapper) : base(mapper)
         {
-            _userManager = userManager;
+            this.userManager = userManager;
         }
         #endregion
 
@@ -28,7 +30,7 @@ namespace PMOS.UI.Web.Controllers
         /// <summary>
         /// Предоставляет API для управления пользователями в хранилище.
         /// </summary>
-        private readonly UserManager _userManager;
+        private readonly UserManager userManager;
         #endregion
 
         #region Отображает страницу с работниками. Метод: "GET". Адрес: "/Worker/Index".
@@ -39,16 +41,9 @@ namespace PMOS.UI.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            IEnumerable<WorkerDTO> workers = await _userManager.GetWorkers();
+            IEnumerable<WorkerDTO> workers = await userManager.GetWorkers();
 
-            List<WorkerViewModel> view = workers.Select(worker => new WorkerViewModel
-            {
-                Id = worker.Id,
-                Name = worker.Name,
-                Surname = worker.Surname,
-                Patronymic = worker.Patronymic,
-                Email = worker.Email
-            }).ToList();
+            List<WorkerViewModel> view = mapper.Map<List<WorkerViewModel>>(workers);
 
             return View(view);
         }
@@ -74,17 +69,9 @@ namespace PMOS.UI.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
-            WorkerDTO worker = await _userManager.GetWorkerById(id);
+            WorkerDTO worker = await userManager.GetWorkerById(id);
 
-            WorkerDetailsModel workerDetailsModel = new WorkerDetailsModel
-            {
-                Id = worker.Id,
-                Name = worker.Name,
-                Surname = worker.Surname,
-                Patronymic = worker.Patronymic,
-                Email = worker.Email,
-                RoleName = worker.RoleName
-            };
+            WorkerDetailsModel workerDetailsModel = mapper.Map<WorkerDetailsModel>(worker);
 
             return View(workerDetailsModel);
         }
@@ -98,17 +85,9 @@ namespace PMOS.UI.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            WorkerDTO worker = await _userManager.GetWorkerById(id);
+            WorkerDTO worker = await userManager.GetWorkerById(id);
 
-            WorkerEditModel workerEditModel = new WorkerEditModel
-            {
-                Id = worker.Id,
-                IdUser = worker.IdUser,
-                Name = worker.Name,
-                Surname = worker.Surname,
-                Patronymic = worker.Patronymic,
-                Email = worker.Email
-            };
+            WorkerEditModel workerEditModel = mapper.Map<WorkerEditModel>(worker);
 
             return View(workerEditModel);
         }
@@ -126,17 +105,11 @@ namespace PMOS.UI.Web.Controllers
             if (workerEditModel == null)
                 throw new ArgumentNullException(nameof(workerEditModel));
 
-            WorkerDTO workerDTO = new WorkerDTO
-            {
-                Id = workerEditModel.Id,
-                IdUser = workerEditModel.IdUser,
-                Name = workerEditModel.Name,
-                Surname = workerEditModel.Surname,
-                Patronymic = workerEditModel.Patronymic,
-                Email = workerEditModel.Email
-            };
+            WorkerDTO workerDTO = mapper.Map<WorkerEditModel, WorkerDTO>(workerEditModel, options => options.ConfigureMap()
+                 .ForMember(destinationMember => destinationMember.RoleName, opt => opt.Ignore())
+                 .ForMember(destinationMember => destinationMember.IdProjectWorker, opt => opt.Ignore()));
 
-            var result = await _userManager.UpdateWorker(workerDTO);
+            var result = await userManager.UpdateWorker(workerDTO);
 
             if (result.Succeeded)
             {
@@ -155,7 +128,7 @@ namespace PMOS.UI.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            var result = await _userManager.DeleteWorker(id);
+            var result = await userManager.DeleteWorker(id);
 
             if (result.Succeeded)
             {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PMOS.DTO.Account
+﻿namespace PMOS.DTO.Account
 {
     /// <summary>
     /// Роль.

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using AutoMapper;
+using CCFI.UI.Web.Controllers.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PMOS.Logic.Interfaces;
@@ -6,13 +7,15 @@ using PMOS.Logic.Interfaces;
 namespace PMOS.UI.Web.Controllers
 {
     [Authorize]
-    public class HomeController : Controller
+    public class HomeController : GenericController
     {
-        #region Конструктор
+        #region Конструктор.
         /// <summary>
-        /// Конструктор
+        /// Конструктор.
         /// </summary>
-        public HomeController(IProjectManagementLogic projectManagementLogic)
+        /// <param name="projectManagementLogic">Предоставляет API для управления проектами.</param>
+        /// <param name="mapper">Маппер для маппинга объектов.</param>
+        public HomeController(IProjectManagementLogic projectManagementLogic, IMapper mapper) : base(mapper)
         {
             this.projectManagementLogic = projectManagementLogic;
         }

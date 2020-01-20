@@ -12,7 +12,7 @@ namespace CCFI.Logic.Logics
         /// <summary>
         /// Конструктор.
         /// </summary>
-        /// <param name="pmosContext">Контекст для работы с базой данных PMOS</param>
+        /// <param name="pmosContext">Контекст для работы с базой данных PMOS.</param>
         /// <param name="mapper">Маппер для маппинга объектов.</param>
         public ManagementLogic(IStorage storage, IMapper mapper)
         {
