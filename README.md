@@ -39,6 +39,7 @@ Web-приложение выполнено в трёхуровневой арх
 - Database - MSSQL;
 - ORM - Entity Framework Core 2;
 - Authorization - AspNetCore Identity 2;
+- Other tools - AutoMapper 7.0.1;
 
 **Frontend:**
 - Bootstrap-4.0.0;
