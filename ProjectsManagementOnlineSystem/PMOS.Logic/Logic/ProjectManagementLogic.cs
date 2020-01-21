@@ -216,7 +216,7 @@ namespace PMOS.Logic.Logic
 
             ProjectWorker projectWorker = await storage.GetRepository<ProjectWorker>().FindById(idProjectWorker);
 
-            if (projectWorker != null)
+            if (projectWorker == null)
                 throw new ArgumentNullException(nameof(projectWorker));
 
             using (var transaction = storage.BeginTransaction())

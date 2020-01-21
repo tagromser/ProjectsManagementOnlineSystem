@@ -7,7 +7,6 @@
   <ItemGroup>
     <Folder Include="Controllers\Shared\" />
     <Folder Include="wwwroot\Scripts\" />
-    <Folder Include="wwwroot\Styles\" />
   </ItemGroup>
 
   <ItemGroup>

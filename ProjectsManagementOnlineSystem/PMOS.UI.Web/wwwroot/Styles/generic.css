@@ -1,0 +1,12 @@
+.input-validation-error {
+  border-color: #dc3545;
+}
+.input-validation-error:focus {
+  border-color: #dc3545 !important;
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+          box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+}
+.card .card-body {
+  margin-left: 30%;
+  margin-right: 30%;
+}

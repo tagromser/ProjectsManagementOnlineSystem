@@ -91,5 +91,4 @@ var ViewIndex = /** @class */ (function () {
     return ViewIndex;
 }());
 window.addEventListener("load", initialize);
-
-//# sourceMappingURL=Content/TypeScript/generic.js.map
+//# sourceMappingURL=generic.js.map
