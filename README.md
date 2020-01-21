@@ -45,3 +45,5 @@ Web-приложение выполнено в трёхуровневой арх
 - Bootstrap-4.0.0;
 - Jquery-3.3.1;
 - FontAwesome-5.0.13;
+- Less/TypeScript-3.0.3;
+- Gulp-4.0.0;
